@@ -6,37 +6,41 @@
 <title>IQ TEST AI</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
-:root{--bg1:#1a0b2e;--bg2:#2d1458;--p:#8b5cf6;--p3:#c4b5fd;--card:rgba(255,255,255,.08);--line:rgba(255,255,255,.14);--ok:#34d399;--bad:#f87171;--txt:#f5f3ff;--mut:#b9aee0}
+:root{--bg1:#1a0b2e;--bg2:#2d1458;--p:#8b5cf6;--p3:#c4b5fd;--card:rgba(255,255,255,.08);--line:rgba(255,255,255,.14);--ok:#34d399;--soft:#a78bfa;--txt:#f5f3ff;--mut:#b9aee0}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:radial-gradient(circle at 20% 0%,#4c1d95 0%,transparent 45%),linear-gradient(160deg,var(--bg2),var(--bg1));background-attachment:fixed;min-height:100vh;color:var(--txt);padding:env(safe-area-inset-top) 16px calc(env(safe-area-inset-bottom) + 24px)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:radial-gradient(circle at 20% 0%,#4c1d95 0%,transparent 45%),linear-gradient(160deg,var(--bg2),var(--bg1));background-attachment:fixed;min-height:100vh;color:var(--txt);padding:env(safe-area-inset-top) 16px calc(env(safe-area-inset-bottom) + 28px)}
 .wrap{max-width:480px;margin:0 auto;padding-top:20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 10px 40px rgba(0,0,0,.3)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 10px 40px rgba(0,0,0,.3);margin-bottom:14px}
 .hidden{display:none!important}
 .center{text-align:center}
 .logo{font-size:56px;width:96px;height:96px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;border-radius:28px;background:linear-gradient(135deg,var(--p),#6d28d9);box-shadow:0 10px 30px rgba(139,92,246,.5)}
 h1{font-size:30px;letter-spacing:1px;margin-bottom:8px}
-h2{font-size:21px;line-height:1.4;margin-bottom:18px}
+h2{font-size:20px;line-height:1.45;margin-bottom:16px}
 h3{font-size:18px;margin-bottom:12px}
 .sub{color:var(--mut);margin-bottom:18px;line-height:1.5}
-.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:22px}
 .chips span{background:rgba(139,92,246,.2);border:1px solid rgba(167,139,250,.35);padding:8px 12px;border-radius:99px;font-size:13px}
-.btn{width:100%;border:0;border-radius:16px;padding:16px;font-size:17px;font-weight:700;color:#fff;background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 8px 24px rgba(109,40,217,.45);cursor:pointer}
+.btn{width:100%;border:0;border-radius:16px;padding:16px;font-size:17px;font-weight:700;color:#fff;background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 8px 24px rgba(109,40,217,.45);cursor:pointer;margin-top:10px}
 .btn:active{transform:scale(.98)}
-.btn.ghost{background:var(--card);border:1px solid var(--line);box-shadow:none;margin-top:10px}
-.btn[disabled]{opacity:.55}
-.note{margin-top:16px;font-size:12px;color:var(--mut);line-height:1.5}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-weight:600}
+.btn.ghost{background:var(--card);border:1px solid var(--line);box-shadow:none}
+.note{margin-top:14px;font-size:12px;color:var(--mut);line-height:1.5}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-weight:600;gap:8px}
+.tag{font-size:13px;background:rgba(139,92,246,.2);padding:6px 12px;border-radius:99px}
 .timer{background:rgba(139,92,246,.25);padding:6px 14px;border-radius:99px;min-width:56px;text-align:center}
-.timer.low{background:rgba(248,113,113,.3);color:#fecaca}
+.timer.low{background:rgba(251,191,36,.25);color:#fde68a}
 .bar,.tbar{height:6px;background:rgba(255,255,255,.12);border-radius:9px;overflow:hidden}
 .bar{margin-bottom:14px}
 .tbar{margin-bottom:18px}
 #pbar,#tbar{height:100%;background:linear-gradient(90deg,var(--p),var(--p3));border-radius:9px;transition:width .4s}
 #tbar{transition:width 1s linear}
+.dots{letter-spacing:3px;color:var(--p3);font-size:12px;margin-bottom:10px}
 .opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.07);border:1.5px solid var(--line);color:var(--txt);border-radius:14px;padding:14px 16px;margin-bottom:10px;font-size:16px;cursor:pointer;transition:.2s}
 .opt:active{transform:scale(.98)}
-.opt.ok{background:rgba(52,211,153,.2);border-color:var(--ok)}
-.opt.bad{background:rgba(248,113,113,.2);border-color:var(--bad)}
+.opt.ok{background:rgba(52,211,153,.18);border-color:var(--ok)}
+.opt.soft{background:rgba(167,139,250,.18);border-color:var(--soft)}
+.opt[disabled]{pointer-events:none}
+.fb{margin-top:6px;padding:14px;border-radius:14px;background:rgba(139,92,246,.15);border:1px solid rgba(167,139,250,.3);line-height:1.5;font-size:14px}
+.fb b{display:block;margin-bottom:4px;font-size:15px}
 .emoji{font-size:48px;margin-bottom:6px}
 .score{font-size:64px;font-weight:800;background:linear-gradient(135deg,#fff,var(--p3));-webkit-background-clip:text;background-clip:text;color:transparent}
 .score span{font-size:28px;opacity:.7}
@@ -44,12 +48,16 @@ h3{font-size:18px;margin-bottom:12px}
 .stats div{background:rgba(139,92,246,.18);border-radius:16px;padding:12px 4px}
 .stats b{display:block;font-size:20px}
 .stats small{color:var(--mut);font-size:12px}
+.cat{margin-bottom:14px}
+.cat .r{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
+.cat .b{height:10px;background:rgba(255,255,255,.1);border-radius:9px;overflow:hidden}
+.cat .b i{display:block;height:100%;background:linear-gradient(90deg,var(--p),var(--p3));border-radius:9px}
 .tips{list-style:none}
 .tips li{padding:10px 0;border-bottom:1px solid var(--line);line-height:1.5;font-size:15px}
 .tips li:last-child{border:0}
-.w{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.5}
-.w:last-child{border:0}
-.w span{color:var(--ok)}
+.lock{opacity:.6}
+.lock li::before{content:"🔒 "}
+.free{background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.35);border-radius:14px;padding:14px;line-height:1.5;margin-bottom:12px;font-size:15px}
 </style>
 </head>
 <body>
@@ -59,18 +67,22 @@ h3{font-size:18px;margin-bottom:12px}
   <div class="logo">🧠</div>
   <h1>IQ TEST AI</h1>
   <p class="sub" id="hello">Mantiqiy fikrlash testiga xush kelibsiz</p>
-  <div class="chips"><span>20 ta savol</span><span>⏱ Har biriga 30 soniya</span><span>📊 Tavsiyalar</span></div>
+  <div class="chips"><span>20 ta savol</span><span>4 xil yo'nalish</span><span>⏱ Har biriga 40 soniya</span><span>📊 Shaxsiy xulosa</span></div>
+  <p class="sub" id="best"></p>
   <button class="btn" onclick="startQuiz()">Testni boshlash</button>
-  <p class="note">Bu test o'yin-ko'ngilochar va o'zini sinash uchun. Rasmiy IQ o'lchovi emas.</p>
+  <p class="note">Bu o'zini sinash uchun mantiqiy test. Rasmiy IQ o'lchovi emas.</p>
 </div>
 
 <div id="quiz" class="hidden">
-  <div class="top"><span id="count">1/20</span><span id="timer" class="timer">30</span></div>
+  <div class="top"><span id="count">1/20</span><span id="streak" class="tag hidden"></span><span id="timer" class="timer">40</span></div>
   <div class="bar"><div id="pbar"></div></div>
   <div class="card">
     <div class="tbar"><div id="tbar"></div></div>
+    <div class="dots" id="meta"></div>
     <h2 id="qtext"></h2>
     <div id="opts"></div>
+    <div id="fb" class="fb hidden"></div>
+    <button id="next" class="btn hidden" onclick="nextQ()">Keyingisi →</button>
   </div>
 </div>
 
@@ -81,67 +93,70 @@ h3{font-size:18px;margin-bottom:12px}
 <script>
 const tg = window.Telegram && window.Telegram.WebApp;
 if (tg) {
-  tg.ready();
-  tg.expand();
+  tg.ready(); tg.expand();
   try { tg.setHeaderColor("#1a0b2e"); tg.setBackgroundColor("#1a0b2e"); } catch (e) {}
   const u = tg.initDataUnsafe && tg.initDataUnsafe.user;
-  if (u && u.first_name) {
-    document.getElementById("hello").textContent = "Salom, " + u.first_name + "! Mantiqiy fikrlash testiga xush kelibsiz 👋";
-  }
+  if (u && u.first_name) document.getElementById("hello").textContent = "Salom, " + u.first_name + "! Mantiqiy fikrlash testiga xush kelibsiz 👋";
 }
-function haptic(type) {
-  try { tg.HapticFeedback.notificationOccurred(type); } catch (e) {}
-}
+function haptic(t) { try { tg.HapticFeedback.notificationOccurred(t); } catch (e) {} }
+function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 
-const LIMIT = 30;
+const LIMIT = 40;
+const CATS = {
+  R: {n:"Raqamlar", e:"🔢"},
+  M: {n:"Mantiq", e:"🧩"},
+  S: {n:"So'z va tushuncha", e:"📚"},
+  F: {n:"Naqsh va shakl", e:"🔷"}
+};
+const TIP = {
+  R: "Sonlar qatorida avval ayirmani, keyin nisbatni (×, ÷) tekshiring.",
+  M: "Mantiqiy masalada faktlarni ketma-ket yozib chiqing, javob o'zi ko'rinadi.",
+  S: "Tushunchalar orasidagi bog'lanishni gap bilan ayting: «X — Y uchun».",
+  F: "Naqshda nima takrorlanayotganini yoki o'sayotganini aniqlang."
+};
+
 const Q = [
-  {q:"Qatorni davom ettiring: 2, 4, 8, 16, ?", o:["24","30","32","36"], a:2},
-  {q:"Qatorni davom ettiring: 3, 6, 9, 12, ?", o:["14","15","16","18"], a:1},
-  {q:"Qatorni davom ettiring: 1, 4, 9, 16, ?", o:["20","24","36","25"], a:3},
-  {q:"Qatorni davom ettiring: 5, 10, 20, 40, ?", o:["80","50","60","100"], a:0},
-  {q:"Qatorni davom ettiring: 1, 1, 2, 3, 5, 8, ?", o:["11","12","13","15"], a:2},
-  {q:"Barcha mushuklar hayvon. Barcha hayvonlar tirik. Demak, barcha mushuklar...", o:["Qush","Tirik mavjudot","O'simlik","Faqat uy hayvoni"], a:1},
-  {q:"Olma : meva = sabzi : ?", o:["Go'sht","Ichimlik","Sabzavot","Don"], a:2},
-  {q:"Qaysi so'z ortiqcha? Mushuk, It, Ot, Stol", o:["Mushuk","It","Ot","Stol"], a:3},
-  {q:"5 ta mashina 5 ta detalni 5 daqiqada ishlab chiqaradi. 100 ta mashina 100 ta detalni necha daqiqada ishlab chiqaradi?", o:["1","5","20","100"], a:1},
-  {q:"Ali Vali'dan baland, Vali Sherzoddan baland. Eng past bo'yli kim?", o:["Ali","Vali","Sherzod","Aniqlab bo'lmaydi"], a:2},
-  {q:"2 + 2 × 2 = ?", o:["4","8","6","10"], a:2},
-  {q:"Soat roppa-rosa 3:00 bo'lganda soat va minut millari orasidagi burchak necha gradus?", o:["30°","60°","120°","90°"], a:3},
-  {q:"Ota o'g'lidan 25 yosh katta. 5 yildan keyin ota o'g'lidan necha yosh katta bo'ladi?", o:["20","25","30","5"], a:1},
-  {q:"Bugun dushanba. 10 kundan keyin qaysi kun bo'ladi?", o:["Chorshanba","Juma","Payshanba","Shanba"], a:2},
-  {q:"Qatorni davom ettiring: 2, 6, 12, 20, 30, ?", o:["36","40","42","44"], a:2},
-  {q:"Ikki sonning yig'indisi 10, ko'paytmasi 21. Bu sonlar qaysilar?", o:["2 va 8","3 va 7","4 va 6","5 va 5"], a:1},
-  {q:"Agar yomg'ir yog'sa, yer ho'l bo'ladi. Yer ho'l. Bundan yomg'ir yog'gan degan xulosa chiqadimi?", o:["Ha, har doim","Yo'q, yer boshqa sabab bilan ham ho'l bo'lishi mumkin","Faqat qishda","Faqat kechasi"], a:1},
-  {q:"Harflar qatorini davom ettiring: A, C, E, G, ?", o:["H","J","I","K"], a:2},
-  {q:"Kubning nechta qirrasi bor?", o:["6","8","16","12"], a:3},
-  {q:"Bir sonni 3 ga ko'paytirib, 4 ni qo'shsak 19 chiqdi. Bu qaysi son?", o:["3","4","5","6"], a:2}
+  {c:"R", d:1, q:"Qatorni davom ettiring: 3, 6, 12, 24, ?", o:["36","48","30","42"], a:1, x:"Har bir son oldingisidan 2 baravar katta."},
+  {c:"S", d:1, q:"Qush : Uchish = Baliq : ?", o:["Suv","Dengiz","Suzish","Qanot"], a:2, x:"Qush uchadi, baliq suzadi, bu harakat turi."},
+  {c:"M", d:1, q:"Barcha gullar o'simlik. Atirgul gul. Demak, atirgul...", o:["Hayvon","O'simlik","Meva","Daraxt"], a:1, x:"Gul o'simlik bo'lsa, atirgul ham o'simlik."},
+  {c:"F", d:1, q:"Naqshni davom ettiring: 🔺 🔵 🔺 🔵 🔺 ?", o:["🔺","🔵","🟢","⬛"], a:1, x:"Ikki shakl navbatma-navbat keladi."},
+  {c:"R", d:1, q:"Qatorni davom ettiring: 7, 14, 21, 28, ?", o:["32","35","42","36"], a:1, x:"Har safar 7 qo'shiladi."},
+
+  {c:"R", d:2, q:"Qatorni davom ettiring: 2, 3, 5, 8, 12, ?", o:["15","16","17","18"], a:2, x:"Ayirmalar 1, 2, 3, 4 bo'lib o'sadi, keyingisi +5."},
+  {c:"M", d:2, q:"Ali Vali'dan tez yuguradi. Sardor Ali'dan sekin, lekin Vali'dan tez. Eng sekin yuguruvchi kim?", o:["Ali","Sardor","Vali","Aniqlab bo'lmaydi"], a:2, x:"Tartib: Ali > Sardor > Vali."},
+  {c:"S", d:2, q:"Qaysi biri boshqalardan farq qiladi? Olma, Nok, Uzum, Sabzi", o:["Olma","Nok","Uzum","Sabzi"], a:3, x:"Uchtasi meva, sabzi esa sabzavot."},
+  {c:"F", d:2, q:"Naqshni davom ettiring: 🔴 / 🔴🔴 / 🔴🔴🔴 / ?", o:["🔴🔴","🔴🔴🔴🔴","🔴🔴🔴🔴🔴","🔴"], a:1, x:"Har safar bitta doira qo'shiladi."},
+  {c:"R", d:2, q:"Bir sonni 4 ga ko'paytirib, 6 ni ayirsak 22 chiqdi. Bu qaysi son?", o:["5","6","7","8"], a:2, x:"22 + 6 = 28, 28 ÷ 4 = 7."},
+
+  {c:"R", d:3, q:"Qatorni davom ettiring: 1, 2, 6, 24, 120, ?", o:["240","600","720","840"], a:2, x:"Ko'paytuvchilar 2, 3, 4, 5, keyingisi ×6."},
+  {c:"M", d:3, q:"Agar A bo'lsa, B bo'ladi. B bo'lmadi. Bundan nima xulosa chiqadi?", o:["A bo'lgan","A bo'lmagan","B baribir bo'ladi","Aniqlab bo'lmaydi"], a:1, x:"B bo'lmasa, A ham bo'lishi mumkin emas, aks holda B bo'lardi."},
+  {c:"S", d:3, q:"Shifokor : Kasalxona = O'qituvchi : ?", o:["Kitob","Maktab","Talaba","Dars"], a:1, x:"Kasb egasi va uning ish joyi."},
+  {c:"F", d:3, q:"Strelkalar aylanmoqda: ⬆️ ➡️ ⬇️ ⬅️ ⬆️ ?", o:["⬇️","⬅️","➡️","⬆️"], a:2, x:"Har safar 90° soat strelkasi bo'yicha buriladi."},
+  {c:"R", d:3, q:"Soat 3:15 bo'lganda soat va minut millari orasidagi burchak necha gradus?", o:["0°","7,5°","15°","22,5°"], a:1, x:"Minut mili 90° da, soat mili 3-raqamdan 7,5° o'tgan: 90 − 82,5 = 7,5°."},
+
+  {c:"R", d:4, q:"Qatorni davom ettiring: 2, 6, 7, 21, 22, 66, ?", o:["67","132","69","88"], a:0, x:"Navbatma-navbat ×3 va +1."},
+  {c:"M", d:4, q:"Ikki ota va ikki o'g'il bir-bittadan olma yedi. Jami 3 ta olma yeyildi. Bu qanday bo'lishi mumkin?", o:["Bittasi yemagan","Uch kishi: bobo, ota, o'g'il","Savol xato","Biri ikkita yegan"], a:1, x:"Bobo ham ota, ham o'g'il bo'lishi mumkin: jami 3 kishi."},
+  {c:"S", d:4, q:"Tezlik : km/soat = Harorat : ?", o:["Issiq","Termometr","Gradus","Qish"], a:2, x:"Kattalik va uning o'lchov birligi."},
+  {c:"F", d:4, q:"Burchaklar soni ortib bormoqda: 🔺(3) ◼️(4) ⬟(5) ?", o:["⭕","⬢ (6 burchak)","🔺","◼️"], a:1, x:"3, 4, 5, keyingisi 6 burchakli shakl."},
+  {c:"R", d:4, q:"Qatorni davom ettiring: 3, 5, 9, 17, 33, ?", o:["49","57","65","66"], a:2, x:"Ayirmalar 2, 4, 8, 16, keyingisi 32: 33 + 32 = 65."}
 ];
 
 const LEVELS = [
-  {max:7, e:"🌱", t:"Boshlang'ich daraja", tips:[
-    "Har kuni 10 daqiqa mantiqiy topishmoq va sudoku yeching.",
-    "Savolni shoshmasdan, ikki marta o'qib chiqing.",
-    "Sonlar qatorlarini (farqi, ko'paytmasi) topishni mashq qiling.",
-    "Testni bir hafta keyin qayta topshirib, o'sishni ko'ring."]},
-  {max:13, e:"⚡", t:"O'rta daraja", tips:[
-    "Asoslaringiz yaxshi. Endi murakkabroq qatorlar va mantiqiy xulosalarga e'tibor bering.",
-    "Noma'lum savolda javoblarni birma-bir chiqarib tashlash usulini ishlating.",
-    "Shaxmat yoki mantiqiy o'yinlar fikrlashni kuchaytiradi.",
-    "Vaqt yetmayotgan bo'lsa, qiyin savolni o'tkazib yuborishni mashq qiling."]},
-  {max:17, e:"🚀", t:"Yuqori daraja", tips:[
-    "Juda yaxshi natija! Mantiqiy fikrlashingiz kuchli.",
-    "Xatolar tahlilini ko'rib chiqing, odatda ular e'tiborsizlikdan bo'ladi.",
-    "Murakkabroq masalalar va kodlash mashqlari bilan o'zingizni sinang.",
-    "Do'stlaringiz bilan musobaqalashib ko'ring."]},
-  {max:20, e:"👑", t:"A'lo daraja", tips:[
-    "Ajoyib! Deyarli barcha savollarga to'g'ri javob berdingiz.",
-    "Endi vaqtni qisqartirib, tezlik ustida ishlang.",
-    "Murakkab mantiqiy masalalar va matematik olimpiada topshiriqlarini sinab ko'ring.",
-    "Bilimingizni boshqalarga o'rgatish ham fikrlashni yanada mustahkamlaydi."]}
+  {max:6,  e:"🌱", t:"Rivojlanayotgan daraja", s:"Siz hozir poydevor qurayapsiz. Har bir mashq tezda natija beradi."},
+  {max:12, e:"⚡", t:"Barqaror daraja", s:"Asoslaringiz yaxshi. Murakkab savollarda yana bir qadam kerak."},
+  {max:17, e:"🚀", t:"Kuchli daraja", s:"Mantiqiy fikrlashingiz yuqori. Siz ko'pchilikdan oldindasiz."},
+  {max:20, e:"👑", t:"A'lo daraja", s:"Deyarli xatosiz! Endi tezlik va murakkab masalalar ustida ishlash mumkin."}
 ];
 
-let i = 0, score = 0, left = LIMIT, timer = null, locked = false, t0 = 0, ans = [];
+let i = 0, score = 0, streak = 0, maxStreak = 0, left = LIMIT, timer = null, locked = false, t0 = 0, ans = [];
+let stat = {};
 const $ = id => document.getElementById(id);
+
+(function () {
+  const b = load("iq_best");
+  if (b) $("best").textContent = "Eng yaxshi natijangiz: " + b + "/20";
+})();
 
 function show(id) {
   ["start", "quiz", "result"].forEach(s => $(s).classList.toggle("hidden", s !== id));
@@ -149,7 +164,8 @@ function show(id) {
 }
 
 function startQuiz() {
-  i = 0; score = 0; ans = []; t0 = Date.now();
+  i = 0; score = 0; streak = 0; maxStreak = 0; ans = []; t0 = Date.now();
+  stat = {R:[0,0], M:[0,0], S:[0,0], F:[0,0]};
   show("quiz");
   render();
 }
@@ -167,7 +183,12 @@ function render() {
   const q = Q[i];
   $("count").textContent = (i + 1) + "/" + Q.length;
   $("pbar").style.width = (i / Q.length * 100) + "%";
+  $("meta").textContent = CATS[q.c].e + " " + CATS[q.c].n + "   " + "●".repeat(q.d) + "○".repeat(4 - q.d);
   $("qtext").textContent = q.q;
+  $("fb").classList.add("hidden");
+  $("next").classList.add("hidden");
+  const st = $("streak");
+  if (streak >= 2) { st.textContent = "🔥 " + streak; st.classList.remove("hidden"); } else st.classList.add("hidden");
   const box = $("opts");
   box.innerHTML = "";
   q.o.forEach((t, k) => {
@@ -186,64 +207,105 @@ function render() {
   }, 1000);
 }
 
+function cheer() {
+  if (i === 4) return " Zo'r boshlanish!";
+  if (i === 9) return " Yarmi o'tdi, davom eting!";
+  if (i === 14) return " Oxirgi 5 ta savol qoldi!";
+  return "";
+}
+
 function pick(k) {
   if (locked) return;
   locked = true;
   clearInterval(timer);
   const q = Q[i];
   ans.push(k);
+  stat[q.c][1]++;
   const btns = $("opts").children;
-  if (k === q.a) score++;
-  if (k >= 0 && k !== q.a) btns[k].classList.add("bad");
+  for (const b of btns) b.setAttribute("disabled", "");
+  let title;
+  if (k === q.a) {
+    score++; stat[q.c][0]++; streak++; if (streak > maxStreak) maxStreak = streak;
+    title = streak >= 3 ? "🔥 To'g'ri! " + streak + " ta ketma-ket" : "✅ To'g'ri!";
+    haptic("success");
+  } else {
+    streak = 0;
+    if (k >= 0) btns[k].classList.add("soft");
+    title = k === -1 ? "⏱ Vaqt tugadi. Hech qisi yo'q!" : "💜 Yaxshi urinish!";
+    haptic("warning");
+  }
   btns[q.a].classList.add("ok");
-  haptic(k === q.a ? "success" : "error");
-  setTimeout(() => {
-    i++;
-    if (i < Q.length) render(); else finish();
-  }, 900);
+  $("fb").innerHTML = "<b>" + title + cheer() + "</b>" + q.x;
+  $("fb").classList.remove("hidden");
+  const nx = $("next");
+  nx.textContent = i === Q.length - 1 ? "Natijani ko'rish →" : "Keyingisi →";
+  nx.classList.remove("hidden");
 }
 
-function fmt(s) {
-  return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+function nextQ() {
+  i++;
+  if (i < Q.length) render(); else finish();
 }
+
+function fmt(s) { return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
 
 function finish() {
   clearInterval(timer);
   const sec = Math.round((Date.now() - t0) / 1000);
-  const iq = 80 + score * 3;
   const pct = Math.round(score / Q.length * 100);
   const lvl = LEVELS.find(l => score <= l.max);
-  let wrong = "";
-  Q.forEach((q, n) => {
-    if (ans[n] !== q.a) {
-      wrong += '<div class="w"><b>' + (n + 1) + '.</b> ' + q.q + '<br><span>To\'g\'ri javob: ' + q.o[q.a] + '</span></div>';
-    }
-  });
-  if (wrong) wrong = '<div class="card" style="margin-top:14px"><h3>❌ Xatolar tahlili</h3>' + wrong + '</div>';
+  const prev = parseInt(load("iq_best") || "0", 10);
+  if (score > prev) save("iq_best", String(score));
+
+  const keys = Object.keys(CATS);
+  const rate = c => stat[c][1] ? stat[c][0] / stat[c][1] : 0;
+  const sorted = keys.slice().sort((a, b) => rate(b) - rate(a));
+  const best = sorted[0], weak = sorted[sorted.length - 1];
+
+  const bars = keys.map(c => {
+    const p = Math.round(rate(c) * 100);
+    return '<div class="cat"><div class="r"><span>' + CATS[c].e + ' ' + CATS[c].n + '</span><b>' + stat[c][0] + '/' + stat[c][1] + '</b></div><div class="b"><i style="width:' + p + '%"></i></div></div>';
+  }).join("");
+
+  const record = score > prev && prev > 0 ? '<p class="sub" style="margin-top:12px">🎉 Yangi shaxsiy rekord!</p>' : "";
+
   $("result").innerHTML =
     '<div class="card center">' +
       '<div class="emoji">' + lvl.e + '</div>' +
       '<div class="score">' + score + '<span>/' + Q.length + '</span></div>' +
-      '<p class="sub">' + lvl.t + '</p>' +
+      '<p class="sub"><b>' + lvl.t + '</b><br>' + lvl.s + '</p>' +
       '<div class="stats">' +
-        '<div><b>' + iq + '</b><small>Taxminiy IQ</small></div>' +
         '<div><b>' + pct + '%</b><small>To\'g\'ri</small></div>' +
+        '<div><b>🔥 ' + maxStreak + '</b><small>Eng uzun seriya</small></div>' +
         '<div><b>' + fmt(sec) + '</b><small>Vaqt</small></div>' +
-      '</div>' +
+      '</div>' + record +
     '</div>' +
-    '<div class="card" style="margin-top:14px"><h3>💡 Tavsiyalar</h3><ul class="tips">' +
-      lvl.tips.map(t => "<li>" + t + "</li>").join("") +
-    '</ul></div>' +
-    wrong +
-    '<div style="margin-top:14px">' +
-      '<button class="btn" onclick="startQuiz()">🔄 Qayta topshirish</button>' +
-      '<button class="btn ghost" disabled>🔒 Shaxsiy tahlil (tez orada)</button>' +
+    '<div class="card"><h3>📊 Yo\'nalishlar bo\'yicha</h3>' + bars + '</div>' +
+    '<div class="card"><h3>💡 Sizga tavsiya</h3>' +
+      '<div class="free"><b>Eng kuchli tomoningiz:</b> ' + CATS[best].e + ' ' + CATS[best].n + '.<br>O\'sish uchun: ' + CATS[weak].e + ' ' + CATS[weak].n + ' ustida ishlang. ' + TIP[weak] + '</div>' +
     '</div>' +
-    '<p class="note center">Natija taxminiy va o\'yin-ko\'ngilochar maqsadda. Rasmiy IQ o\'lchovi emas.</p>';
+    '<div class="card"><h3>🔓 Shaxsiy tahlil</h3>' +
+      '<p class="sub">Bepul xulosa tepada. To\'liq tahlilda quyidagilar bo\'ladi:</p>' +
+      '<ul class="tips lock"><li>Fikrlash uslubingiz: tezmi yoki puxtami</li><li>Har bir xatongiz sababi va yechimi</li><li>7 kunlik shaxsiy mashq rejasi</li><li>Qaytadan topshirib, o\'sishni solishtirish</li></ul>' +
+      '<button class="btn" onclick="wantPro()">Shaxsiy tahlilni olish</button>' +
+    '</div>' +
+    '<button class="btn" onclick="startQuiz()">🔄 Qayta topshirish</button>' +
+    '<button class="btn ghost" onclick="share()">📤 Do\'stlarga ulashish</button>' +
+    '<p class="note center">Natija taxminiy. Rasmiy IQ o\'lchovi emas.</p>';
   show("result");
   haptic("success");
+}
+
+function wantPro() {
+  save("iq_pro_interest", "1");
+  const m = "Shaxsiy tahlil tez orada ishga tushadi. Birinchilardan bo'lib xabar olasiz!";
+  try { tg.showAlert(m); } catch (e) { alert(m); }
+}
+
+function share() {
+  const url = "https://t.me/share/url?url=" + encodeURIComponent("https://t.me/IQTestPro_uz_bot") + "&text=" + encodeURIComponent("Men mantiqiy fikrlash testida " + score + "/20 to'pladim. Sen-chi? 🧠");
+  try { tg.openTelegramLink(url); } catch (e) { window.open(url, "_blank"); }
 }
 </script>
 </body>
 </html>
-
