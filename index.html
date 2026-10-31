@@ -1,1 +1,249 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>IQ TEST AI</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg1:#1a0b2e;--bg2:#2d1458;--p:#8b5cf6;--p3:#c4b5fd;--card:rgba(255,255,255,.08);--line:rgba(255,255,255,.14);--ok:#34d399;--bad:#f87171;--txt:#f5f3ff;--mut:#b9aee0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:radial-gradient(circle at 20% 0%,#4c1d95 0%,transparent 45%),linear-gradient(160deg,var(--bg2),var(--bg1));background-attachment:fixed;min-height:100vh;color:var(--txt);padding:env(safe-area-inset-top) 16px calc(env(safe-area-inset-bottom) + 24px)}
+.wrap{max-width:480px;margin:0 auto;padding-top:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 10px 40px rgba(0,0,0,.3)}
+.hidden{display:none!important}
+.center{text-align:center}
+.logo{font-size:56px;width:96px;height:96px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;border-radius:28px;background:linear-gradient(135deg,var(--p),#6d28d9);box-shadow:0 10px 30px rgba(139,92,246,.5)}
+h1{font-size:30px;letter-spacing:1px;margin-bottom:8px}
+h2{font-size:21px;line-height:1.4;margin-bottom:18px}
+h3{font-size:18px;margin-bottom:12px}
+.sub{color:var(--mut);margin-bottom:18px;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px}
+.chips span{background:rgba(139,92,246,.2);border:1px solid rgba(167,139,250,.35);padding:8px 12px;border-radius:99px;font-size:13px}
+.btn{width:100%;border:0;border-radius:16px;padding:16px;font-size:17px;font-weight:700;color:#fff;background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 8px 24px rgba(109,40,217,.45);cursor:pointer}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:var(--card);border:1px solid var(--line);box-shadow:none;margin-top:10px}
+.btn[disabled]{opacity:.55}
+.note{margin-top:16px;font-size:12px;color:var(--mut);line-height:1.5}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-weight:600}
+.timer{background:rgba(139,92,246,.25);padding:6px 14px;border-radius:99px;min-width:56px;text-align:center}
+.timer.low{background:rgba(248,113,113,.3);color:#fecaca}
+.bar,.tbar{height:6px;background:rgba(255,255,255,.12);border-radius:9px;overflow:hidden}
+.bar{margin-bottom:14px}
+.tbar{margin-bottom:18px}
+#pbar,#tbar{height:100%;background:linear-gradient(90deg,var(--p),var(--p3));border-radius:9px;transition:width .4s}
+#tbar{transition:width 1s linear}
+.opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.07);border:1.5px solid var(--line);color:var(--txt);border-radius:14px;padding:14px 16px;margin-bottom:10px;font-size:16px;cursor:pointer;transition:.2s}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:rgba(52,211,153,.2);border-color:var(--ok)}
+.opt.bad{background:rgba(248,113,113,.2);border-color:var(--bad)}
+.emoji{font-size:48px;margin-bottom:6px}
+.score{font-size:64px;font-weight:800;background:linear-gradient(135deg,#fff,var(--p3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.score span{font-size:28px;opacity:.7}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stats div{background:rgba(139,92,246,.18);border-radius:16px;padding:12px 4px}
+.stats b{display:block;font-size:20px}
+.stats small{color:var(--mut);font-size:12px}
+.tips{list-style:none}
+.tips li{padding:10px 0;border-bottom:1px solid var(--line);line-height:1.5;font-size:15px}
+.tips li:last-child{border:0}
+.w{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.5}
+.w:last-child{border:0}
+.w span{color:var(--ok)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div id="start" class="card center">
+  <div class="logo">🧠</div>
+  <h1>IQ TEST AI</h1>
+  <p class="sub" id="hello">Mantiqiy fikrlash testiga xush kelibsiz</p>
+  <div class="chips"><span>20 ta savol</span><span>⏱ Har biriga 30 soniya</span><span>📊 Tavsiyalar</span></div>
+  <button class="btn" onclick="startQuiz()">Testni boshlash</button>
+  <p class="note">Bu test o'yin-ko'ngilochar va o'zini sinash uchun. Rasmiy IQ o'lchovi emas.</p>
+</div>
+
+<div id="quiz" class="hidden">
+  <div class="top"><span id="count">1/20</span><span id="timer" class="timer">30</span></div>
+  <div class="bar"><div id="pbar"></div></div>
+  <div class="card">
+    <div class="tbar"><div id="tbar"></div></div>
+    <h2 id="qtext"></h2>
+    <div id="opts"></div>
+  </div>
+</div>
+
+<div id="result" class="hidden"></div>
+
+</div>
+
+<script>
+const tg = window.Telegram && window.Telegram.WebApp;
+if (tg) {
+  tg.ready();
+  tg.expand();
+  try { tg.setHeaderColor("#1a0b2e"); tg.setBackgroundColor("#1a0b2e"); } catch (e) {}
+  const u = tg.initDataUnsafe && tg.initDataUnsafe.user;
+  if (u && u.first_name) {
+    document.getElementById("hello").textContent = "Salom, " + u.first_name + "! Mantiqiy fikrlash testiga xush kelibsiz 👋";
+  }
+}
+function haptic(type) {
+  try { tg.HapticFeedback.notificationOccurred(type); } catch (e) {}
+}
+
+const LIMIT = 30;
+const Q = [
+  {q:"Qatorni davom ettiring: 2, 4, 8, 16, ?", o:["24","30","32","36"], a:2},
+  {q:"Qatorni davom ettiring: 3, 6, 9, 12, ?", o:["14","15","16","18"], a:1},
+  {q:"Qatorni davom ettiring: 1, 4, 9, 16, ?", o:["20","24","36","25"], a:3},
+  {q:"Qatorni davom ettiring: 5, 10, 20, 40, ?", o:["80","50","60","100"], a:0},
+  {q:"Qatorni davom ettiring: 1, 1, 2, 3, 5, 8, ?", o:["11","12","13","15"], a:2},
+  {q:"Barcha mushuklar hayvon. Barcha hayvonlar tirik. Demak, barcha mushuklar...", o:["Qush","Tirik mavjudot","O'simlik","Faqat uy hayvoni"], a:1},
+  {q:"Olma : meva = sabzi : ?", o:["Go'sht","Ichimlik","Sabzavot","Don"], a:2},
+  {q:"Qaysi so'z ortiqcha? Mushuk, It, Ot, Stol", o:["Mushuk","It","Ot","Stol"], a:3},
+  {q:"5 ta mashina 5 ta detalni 5 daqiqada ishlab chiqaradi. 100 ta mashina 100 ta detalni necha daqiqada ishlab chiqaradi?", o:["1","5","20","100"], a:1},
+  {q:"Ali Vali'dan baland, Vali Sherzoddan baland. Eng past bo'yli kim?", o:["Ali","Vali","Sherzod","Aniqlab bo'lmaydi"], a:2},
+  {q:"2 + 2 × 2 = ?", o:["4","8","6","10"], a:2},
+  {q:"Soat roppa-rosa 3:00 bo'lganda soat va minut millari orasidagi burchak necha gradus?", o:["30°","60°","120°","90°"], a:3},
+  {q:"Ota o'g'lidan 25 yosh katta. 5 yildan keyin ota o'g'lidan necha yosh katta bo'ladi?", o:["20","25","30","5"], a:1},
+  {q:"Bugun dushanba. 10 kundan keyin qaysi kun bo'ladi?", o:["Chorshanba","Juma","Payshanba","Shanba"], a:2},
+  {q:"Qatorni davom ettiring: 2, 6, 12, 20, 30, ?", o:["36","40","42","44"], a:2},
+  {q:"Ikki sonning yig'indisi 10, ko'paytmasi 21. Bu sonlar qaysilar?", o:["2 va 8","3 va 7","4 va 6","5 va 5"], a:1},
+  {q:"Agar yomg'ir yog'sa, yer ho'l bo'ladi. Yer ho'l. Bundan yomg'ir yog'gan degan xulosa chiqadimi?", o:["Ha, har doim","Yo'q, yer boshqa sabab bilan ham ho'l bo'lishi mumkin","Faqat qishda","Faqat kechasi"], a:1},
+  {q:"Harflar qatorini davom ettiring: A, C, E, G, ?", o:["H","J","I","K"], a:2},
+  {q:"Kubning nechta qirrasi bor?", o:["6","8","16","12"], a:3},
+  {q:"Bir sonni 3 ga ko'paytirib, 4 ni qo'shsak 19 chiqdi. Bu qaysi son?", o:["3","4","5","6"], a:2}
+];
+
+const LEVELS = [
+  {max:7, e:"🌱", t:"Boshlang'ich daraja", tips:[
+    "Har kuni 10 daqiqa mantiqiy topishmoq va sudoku yeching.",
+    "Savolni shoshmasdan, ikki marta o'qib chiqing.",
+    "Sonlar qatorlarini (farqi, ko'paytmasi) topishni mashq qiling.",
+    "Testni bir hafta keyin qayta topshirib, o'sishni ko'ring."]},
+  {max:13, e:"⚡", t:"O'rta daraja", tips:[
+    "Asoslaringiz yaxshi. Endi murakkabroq qatorlar va mantiqiy xulosalarga e'tibor bering.",
+    "Noma'lum savolda javoblarni birma-bir chiqarib tashlash usulini ishlating.",
+    "Shaxmat yoki mantiqiy o'yinlar fikrlashni kuchaytiradi.",
+    "Vaqt yetmayotgan bo'lsa, qiyin savolni o'tkazib yuborishni mashq qiling."]},
+  {max:17, e:"🚀", t:"Yuqori daraja", tips:[
+    "Juda yaxshi natija! Mantiqiy fikrlashingiz kuchli.",
+    "Xatolar tahlilini ko'rib chiqing, odatda ular e'tiborsizlikdan bo'ladi.",
+    "Murakkabroq masalalar va kodlash mashqlari bilan o'zingizni sinang.",
+    "Do'stlaringiz bilan musobaqalashib ko'ring."]},
+  {max:20, e:"👑", t:"A'lo daraja", tips:[
+    "Ajoyib! Deyarli barcha savollarga to'g'ri javob berdingiz.",
+    "Endi vaqtni qisqartirib, tezlik ustida ishlang.",
+    "Murakkab mantiqiy masalalar va matematik olimpiada topshiriqlarini sinab ko'ring.",
+    "Bilimingizni boshqalarga o'rgatish ham fikrlashni yanada mustahkamlaydi."]}
+];
+
+let i = 0, score = 0, left = LIMIT, timer = null, locked = false, t0 = 0, ans = [];
+const $ = id => document.getElementById(id);
+
+function show(id) {
+  ["start", "quiz", "result"].forEach(s => $(s).classList.toggle("hidden", s !== id));
+  window.scrollTo(0, 0);
+}
+
+function startQuiz() {
+  i = 0; score = 0; ans = []; t0 = Date.now();
+  show("quiz");
+  render();
+}
+
+function setTimer() {
+  const t = $("timer");
+  t.textContent = left;
+  t.classList.toggle("low", left <= 8);
+  $("tbar").style.width = (left / LIMIT * 100) + "%";
+}
+
+function render() {
+  locked = false;
+  left = LIMIT;
+  const q = Q[i];
+  $("count").textContent = (i + 1) + "/" + Q.length;
+  $("pbar").style.width = (i / Q.length * 100) + "%";
+  $("qtext").textContent = q.q;
+  const box = $("opts");
+  box.innerHTML = "";
+  q.o.forEach((t, k) => {
+    const b = document.createElement("button");
+    b.className = "opt";
+    b.textContent = t;
+    b.onclick = () => pick(k);
+    box.appendChild(b);
+  });
+  setTimer();
+  clearInterval(timer);
+  timer = setInterval(() => {
+    left--;
+    setTimer();
+    if (left <= 0) pick(-1);
+  }, 1000);
+}
+
+function pick(k) {
+  if (locked) return;
+  locked = true;
+  clearInterval(timer);
+  const q = Q[i];
+  ans.push(k);
+  const btns = $("opts").children;
+  if (k === q.a) score++;
+  if (k >= 0 && k !== q.a) btns[k].classList.add("bad");
+  btns[q.a].classList.add("ok");
+  haptic(k === q.a ? "success" : "error");
+  setTimeout(() => {
+    i++;
+    if (i < Q.length) render(); else finish();
+  }, 900);
+}
+
+function fmt(s) {
+  return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+}
+
+function finish() {
+  clearInterval(timer);
+  const sec = Math.round((Date.now() - t0) / 1000);
+  const iq = 80 + score * 3;
+  const pct = Math.round(score / Q.length * 100);
+  const lvl = LEVELS.find(l => score <= l.max);
+  let wrong = "";
+  Q.forEach((q, n) => {
+    if (ans[n] !== q.a) {
+      wrong += '<div class="w"><b>' + (n + 1) + '.</b> ' + q.q + '<br><span>To\'g\'ri javob: ' + q.o[q.a] + '</span></div>';
+    }
+  });
+  if (wrong) wrong = '<div class="card" style="margin-top:14px"><h3>❌ Xatolar tahlili</h3>' + wrong + '</div>';
+  $("result").innerHTML =
+    '<div class="card center">' +
+      '<div class="emoji">' + lvl.e + '</div>' +
+      '<div class="score">' + score + '<span>/' + Q.length + '</span></div>' +
+      '<p class="sub">' + lvl.t + '</p>' +
+      '<div class="stats">' +
+        '<div><b>' + iq + '</b><small>Taxminiy IQ</small></div>' +
+        '<div><b>' + pct + '%</b><small>To\'g\'ri</small></div>' +
+        '<div><b>' + fmt(sec) + '</b><small>Vaqt</small></div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="card" style="margin-top:14px"><h3>💡 Tavsiyalar</h3><ul class="tips">' +
+      lvl.tips.map(t => "<li>" + t + "</li>").join("") +
+    '</ul></div>' +
+    wrong +
+    '<div style="margin-top:14px">' +
+      '<button class="btn" onclick="startQuiz()">🔄 Qayta topshirish</button>' +
+      '<button class="btn ghost" disabled>🔒 Shaxsiy tahlil (tez orada)</button>' +
+    '</div>' +
+    '<p class="note center">Natija taxminiy va o\'yin-ko\'ngilochar maqsadda. Rasmiy IQ o\'lchovi emas.</p>';
+  show("result");
+  haptic("success");
+}
+</script>
+</body>
+</html>
 
