@@ -67,7 +67,7 @@ h3{font-size:18px;margin-bottom:12px}
   <div class="logo">🧠</div>
   <h1>IQ TEST AI</h1>
   <p class="sub" id="hello">Mantiqiy fikrlash testiga xush kelibsiz</p>
-  <div class="chips"><span>20 ta savol</span><span>4 xil yo'nalish</span><span>⏱ Har biriga 40 soniya</span><span>📊 Shaxsiy xulosa</span></div>
+  <div class="chips"><span>20 ta savol</span><span>Har safar yangi savollar</span><span>⏱ Har biriga 40 soniya</span><span>📊 Shaxsiy xulosa</span></div>
   <p class="sub" id="best"></p>
   <button class="btn" onclick="startQuiz()">Testni boshlash</button>
   <p class="note">Bu o'zini sinash uchun mantiqiy test. Rasmiy IQ o'lchovi emas.</p>
@@ -116,31 +116,66 @@ const TIP = {
   F: "Naqshda nima takrorlanayotganini yoki o'sayotganini aniqlang."
 };
 
-const Q = [
-  {c:"R", d:1, q:"Qatorni davom ettiring: 3, 6, 12, 24, ?", o:["36","48","30","42"], a:1, x:"Har bir son oldingisidan 2 baravar katta."},
-  {c:"S", d:1, q:"Qush : Uchish = Baliq : ?", o:["Suv","Dengiz","Suzish","Qanot"], a:2, x:"Qush uchadi, baliq suzadi, bu harakat turi."},
-  {c:"M", d:1, q:"Barcha gullar o'simlik. Atirgul gul. Demak, atirgul...", o:["Hayvon","O'simlik","Meva","Daraxt"], a:1, x:"Gul o'simlik bo'lsa, atirgul ham o'simlik."},
-  {c:"F", d:1, q:"Naqshni davom ettiring: 🔺 🔵 🔺 🔵 🔺 ?", o:["🔺","🔵","🟢","⬛"], a:1, x:"Ikki shakl navbatma-navbat keladi."},
-  {c:"R", d:1, q:"Qatorni davom ettiring: 7, 14, 21, 28, ?", o:["32","35","42","36"], a:1, x:"Har safar 7 qo'shiladi."},
+/* Format: [kategoriya, qiyinlik, savol, TO'G'RI javob, [noto'g'ri javoblar], tushuntirish] */
+const BANK_RAW = [
+  /* 1-daraja */
+  ["R",1,"Qatorni davom ettiring: 3, 6, 12, 24, ?","48",["36","30","42"],"Har bir son oldingisidan 2 baravar katta."],
+  ["R",1,"Qatorni davom ettiring: 7, 14, 21, 28, ?","35",["32","42","36"],"Har safar 7 qo'shiladi."],
+  ["R",1,"Qatorni davom ettiring: 10, 20, 30, 40, ?","50",["45","60","55"],"Har safar 10 qo'shiladi."],
+  ["M",1,"Barcha gullar o'simlik. Atirgul gul. Demak, atirgul...","O'simlik",["Hayvon","Meva","Daraxt"],"Gul o'simlik bo'lsa, atirgul ham o'simlik."],
+  ["M",1,"Bugun chorshanba. 2 kundan keyin qaysi kun bo'ladi?","Juma",["Payshanba","Shanba","Seshanba"],"Chorshanba, payshanba, juma."],
+  ["M",1,"Sardor Ali'dan baland, Ali Vali'dan baland. Eng baland kim?","Sardor",["Ali","Vali","Aniqlab bo'lmaydi"],"Tartib: Sardor > Ali > Vali."],
+  ["S",1,"Qush : Uchish = Baliq : ?","Suzish",["Suv","Dengiz","Qanot"],"Qush uchadi, baliq suzadi: bu harakat turi."],
+  ["S",1,"Qaysi biri ortiqcha? Olma, Nok, Uzum, Sabzi","Sabzi",["Olma","Nok","Uzum"],"Uchtasi meva, sabzi esa sabzavot."],
+  ["S",1,"Issiq : Sovuq = Kun : ?","Tun",["Quyosh","Yoz","Soat"],"Bu qarama-qarshi tushunchalar juftligi."],
+  ["F",1,"Naqshni davom ettiring: 🔺 🔵 🔺 🔵 🔺 ?","🔵",["🔺","🟢","⬛"],"Ikki shakl navbatma-navbat keladi."],
+  ["F",1,"Naqshni davom ettiring: 🔴 / 🔴🔴 / 🔴🔴🔴 / ?","🔴🔴🔴🔴",["🔴🔴","🔴🔴🔴🔴🔴","🔴"],"Har safar bitta doira qo'shiladi."],
+  ["F",1,"Strelkalar aylanmoqda: ⬆️ ➡️ ⬇️ ⬅️ ⬆️ ?","➡️",["⬇️","⬅️","⬆️"],"Har safar 90° soat strelkasi bo'yicha buriladi."],
 
-  {c:"R", d:2, q:"Qatorni davom ettiring: 2, 3, 5, 8, 12, ?", o:["15","16","17","18"], a:2, x:"Ayirmalar 1, 2, 3, 4 bo'lib o'sadi, keyingisi +5."},
-  {c:"M", d:2, q:"Ali Vali'dan tez yuguradi. Sardor Ali'dan sekin, lekin Vali'dan tez. Eng sekin yuguruvchi kim?", o:["Ali","Sardor","Vali","Aniqlab bo'lmaydi"], a:2, x:"Tartib: Ali > Sardor > Vali."},
-  {c:"S", d:2, q:"Qaysi biri boshqalardan farq qiladi? Olma, Nok, Uzum, Sabzi", o:["Olma","Nok","Uzum","Sabzi"], a:3, x:"Uchtasi meva, sabzi esa sabzavot."},
-  {c:"F", d:2, q:"Naqshni davom ettiring: 🔴 / 🔴🔴 / 🔴🔴🔴 / ?", o:["🔴🔴","🔴🔴🔴🔴","🔴🔴🔴🔴🔴","🔴"], a:1, x:"Har safar bitta doira qo'shiladi."},
-  {c:"R", d:2, q:"Bir sonni 4 ga ko'paytirib, 6 ni ayirsak 22 chiqdi. Bu qaysi son?", o:["5","6","7","8"], a:2, x:"22 + 6 = 28, 28 ÷ 4 = 7."},
+  /* 2-daraja */
+  ["R",2,"Qatorni davom ettiring: 2, 3, 5, 8, 12, ?","17",["15","16","18"],"Ayirmalar 1, 2, 3, 4 bo'lib o'sadi, keyingisi +5."],
+  ["R",2,"Bir sonni 4 ga ko'paytirib, 6 ni ayirsak 22 chiqdi. Bu qaysi son?","7",["5","6","8"],"22 + 6 = 28, 28 ÷ 4 = 7."],
+  ["R",2,"Qatorni davom ettiring: 1, 4, 9, 16, 25, ?","36",["30","35","49"],"Bular 1², 2², 3², 4², 5², keyingisi 6² = 36."],
+  ["M",2,"Ali Vali'dan tez yuguradi. Sardor Ali'dan sekin, lekin Vali'dan tez. Eng sekin yuguruvchi kim?","Vali",["Ali","Sardor","Aniqlab bo'lmaydi"],"Tartib: Ali > Sardor > Vali."],
+  ["M",2,"Agar yomg'ir yog'sa, yer ho'l bo'ladi. Yer ho'l. Bundan yomg'ir yog'gan degan xulosa chiqadimi?","Yo'q, yer boshqa sabab bilan ham ho'l bo'lishi mumkin",["Ha, har doim","Faqat qishda","Faqat kechasi"],"Ho'llikning boshqa sabablari ham bor: sug'orish, quvur va hokazo."],
+  ["M",2,"Ota o'g'lidan 25 yosh katta. 10 yildan keyin ota o'g'lidan necha yosh katta bo'ladi?","25",["35","15","10"],"Yosh farqi hech qachon o'zgarmaydi."],
+  ["S",2,"Shifokor : Kasalxona = O'qituvchi : ?","Maktab",["Kitob","Talaba","Dars"],"Kasb egasi va uning ish joyi."],
+  ["S",2,"Qaysi so'z ortiqcha? Mushuk, It, Ot, Stol","Stol",["Mushuk","It","Ot"],"Uchtasi jonivor, stol esa jonsiz narsa."],
+  ["S",2,"Ko'z : Ko'rish = Quloq : ?","Eshitish",["Gapirish","Hidlash","Yurish"],"A'zo va uning vazifasi."],
+  ["F",2,"Burchaklar soni ortib bormoqda: 🔺(3) ◼️(4) ⬟(5) ?","⬢ (6 burchak)",["⭕","🔺","◼️"],"3, 4, 5, keyingisi 6 burchakli shakl."],
+  ["F",2,"Naqshni davom ettiring: 🟣🟣🔵 🟣🟣🔵 🟣🟣 ?","🔵",["🟣","🟢","🔴"],"Har uchlikda ikki binafsha va bitta ko'k keladi."],
+  ["F",2,"Naqshni davom ettiring: 1️⃣ 3️⃣ 5️⃣ 7️⃣ ?","9️⃣",["8️⃣","🔟","6️⃣"],"Har safar 2 qo'shiladi."],
 
-  {c:"R", d:3, q:"Qatorni davom ettiring: 1, 2, 6, 24, 120, ?", o:["240","600","720","840"], a:2, x:"Ko'paytuvchilar 2, 3, 4, 5, keyingisi ×6."},
-  {c:"M", d:3, q:"Agar A bo'lsa, B bo'ladi. B bo'lmadi. Bundan nima xulosa chiqadi?", o:["A bo'lgan","A bo'lmagan","B baribir bo'ladi","Aniqlab bo'lmaydi"], a:1, x:"B bo'lmasa, A ham bo'lishi mumkin emas, aks holda B bo'lardi."},
-  {c:"S", d:3, q:"Shifokor : Kasalxona = O'qituvchi : ?", o:["Kitob","Maktab","Talaba","Dars"], a:1, x:"Kasb egasi va uning ish joyi."},
-  {c:"F", d:3, q:"Strelkalar aylanmoqda: ⬆️ ➡️ ⬇️ ⬅️ ⬆️ ?", o:["⬇️","⬅️","➡️","⬆️"], a:2, x:"Har safar 90° soat strelkasi bo'yicha buriladi."},
-  {c:"R", d:3, q:"Soat 3:15 bo'lganda soat va minut millari orasidagi burchak necha gradus?", o:["0°","7,5°","15°","22,5°"], a:1, x:"Minut mili 90° da, soat mili 3-raqamdan 7,5° o'tgan: 90 − 82,5 = 7,5°."},
+  /* 3-daraja */
+  ["R",3,"Qatorni davom ettiring: 1, 2, 6, 24, 120, ?","720",["240","600","840"],"Ko'paytuvchilar 2, 3, 4, 5, keyingisi ×6."],
+  ["R",3,"Soat 3:15 bo'lganda soat va minut millari orasidagi burchak necha gradus?","7,5°",["0°","15°","22,5°"],"Minut mili 90° da, soat mili 3-raqamdan 7,5° o'tgan: 90 − 82,5 = 7,5°."],
+  ["R",3,"Qatorni davom ettiring: 2, 6, 12, 20, 30, ?","42",["36","40","44"],"Ayirmalar 4, 6, 8, 10, keyingisi 12: 30 + 12 = 42."],
+  ["M",3,"Agar A bo'lsa, B bo'ladi. B bo'lmadi. Bundan nima xulosa chiqadi?","A bo'lmagan",["A bo'lgan","B baribir bo'ladi","Aniqlab bo'lmaydi"],"A bo'lganida B ham bo'lardi. B yo'q, demak A ham yo'q."],
+  ["M",3,"Ikki sonning yig'indisi 10, ko'paytmasi 21. Bu sonlar qaysilar?","3 va 7",["2 va 8","4 va 6","5 va 5"],"3 + 7 = 10 va 3 × 7 = 21."],
+  ["M",3,"5 ta mashina 5 ta detalni 5 daqiqada ishlab chiqaradi. 100 ta mashina 100 ta detalni necha daqiqada ishlab chiqaradi?","5 daqiqa",["1 daqiqa","20 daqiqa","100 daqiqa"],"Har bir mashina 5 daqiqada 1 ta detal qiladi."],
+  ["S",3,"Tezlik : km/soat = Harorat : ?","Gradus",["Issiq","Termometr","Qish"],"Kattalik va uning o'lchov birligi."],
+  ["S",3,"Qaysi so'z ortiqcha? Kvadrat, Uchburchak, Doira, Kub","Kub",["Kvadrat","Uchburchak","Doira"],"Uchtasi tekis shakl, kub esa hajmli jism."],
+  ["S",3,"Qalam : Yozish = Pichoq : ?","Kesish",["Oshxona","Temir","O'tkir"],"Asbob va uning vazifasi."],
+  ["F",3,"Naqshni davom ettiring: 🔺🔵 / 🔵🔺 / 🔺🔵 / ?","🔵🔺",["🔺🔵","🔺🔺","🔵🔵"],"Juftlik har safar o'rin almashtiradi."],
+  ["F",3,"Oy fazalari: 🌑 🌒 🌓 🌔 ?","🌕",["🌑","🌖","🌗"],"Oy asta-sekin to'lib boradi, keyingisi to'linoy."],
+  ["F",3,"Naqshni davom ettiring: ⚪ / ⚪⚪ / ⚪⚪⚪⚪ / ?","8 ta ⚪",["6 ta ⚪","5 ta ⚪","16 ta ⚪"],"Har safar doiralar soni 2 baravar ko'payadi."],
 
-  {c:"R", d:4, q:"Qatorni davom ettiring: 2, 6, 7, 21, 22, 66, ?", o:["67","132","69","88"], a:0, x:"Navbatma-navbat ×3 va +1."},
-  {c:"M", d:4, q:"Ikki ota va ikki o'g'il bir-bittadan olma yedi. Jami 3 ta olma yeyildi. Bu qanday bo'lishi mumkin?", o:["Bittasi yemagan","Uch kishi: bobo, ota, o'g'il","Savol xato","Biri ikkita yegan"], a:1, x:"Bobo ham ota, ham o'g'il bo'lishi mumkin: jami 3 kishi."},
-  {c:"S", d:4, q:"Tezlik : km/soat = Harorat : ?", o:["Issiq","Termometr","Gradus","Qish"], a:2, x:"Kattalik va uning o'lchov birligi."},
-  {c:"F", d:4, q:"Burchaklar soni ortib bormoqda: 🔺(3) ◼️(4) ⬟(5) ?", o:["⭕","⬢ (6 burchak)","🔺","◼️"], a:1, x:"3, 4, 5, keyingisi 6 burchakli shakl."},
-  {c:"R", d:4, q:"Qatorni davom ettiring: 3, 5, 9, 17, 33, ?", o:["49","57","65","66"], a:2, x:"Ayirmalar 2, 4, 8, 16, keyingisi 32: 33 + 32 = 65."}
+  /* 4-daraja */
+  ["R",4,"Qatorni davom ettiring: 2, 6, 7, 21, 22, 66, ?","67",["132","69","88"],"Navbatma-navbat ×3 va +1."],
+  ["R",4,"Qatorni davom ettiring: 3, 5, 9, 17, 33, ?","65",["49","57","66"],"Ayirmalar 2, 4, 8, 16, keyingisi 32: 33 + 32 = 65."],
+  ["R",4,"Qatorni davom ettiring: 1, 1, 2, 3, 5, 8, 13, ?","21",["20","24","26"],"Har bir son oldingi ikkitasining yig'indisi: 8 + 13 = 21."],
+  ["M",4,"Ikki ota va ikki o'g'il bir-bittadan olma yedi. Jami 3 ta olma yeyildi. Bu qanday bo'lishi mumkin?","Uch kishi: bobo, ota va o'g'il",["Bittasi yemagan","Savol xato","Biri ikkita yegan"],"Ota ham o'g'il bo'lishi mumkin: bobo, ota, o'g'il jami 3 kishi."],
+  ["M",4,"Barcha A lar B. Hech bir B C emas. Bundan qaysi xulosa to'g'ri?","Hech bir A C emas",["Ba'zi A lar C","Barcha C lar A","Aniqlab bo'lmaydi"],"A lar B ning ichida, B larda esa C yo'q, demak A larda ham C yo'q."],
+  ["M",4,"Ota va o'g'lining yoshi yig'indisi 50. Ota o'g'ildan 4 baravar katta. O'g'il necha yoshda?","10",["8","12","15"],"10 + 40 = 50, 40 esa 10 ning 4 baravari."],
+  ["S",4,"Qaysi so'z ortiqcha? Qo'rg'oshin, Mis, Temir, Shisha","Shisha",["Qo'rg'oshin","Mis","Temir"],"Uchtasi metall, shisha esa metall emas."],
+  ["S",4,"Ochlik : Ovqat = Chanqoqlik : ?","Suv",["Qand","Non","Tuz"],"Ehtiyoj va uni qondiradigan narsa."],
+  ["S",4,"Agar ba'zi shifokorlar yozuvchi va barcha yozuvchilar kitob o'qisa, qaysi xulosa to'g'ri?","Ba'zi shifokorlar kitob o'qiydi",["Barcha shifokorlar kitob o'qiydi","Hech bir shifokor kitob o'qimaydi","Barcha yozuvchilar shifokor"],"Yozuvchi bo'lgan shifokorlar kitob o'qiydi."],
+  ["F",4,"Uchburchak sonlar: 1, 3, 6, ?","10",["9","12","8"],"Ayirmalar 2, 3, 4 bo'lib o'sadi: 6 + 4 = 10."],
+  ["F",4,"Kubning nechta qirrasi bor?","12",["6","8","16"],"Kubda 6 yoq, 8 uch va 12 qirra bor."],
+  ["F",4,"Soat roppa-rosa 6:00 bo'lganda soat va minut millari orasidagi burchak necha gradus?","180°",["90°","120°","150°"],"Mil qarama-qarshi tomonga qaragan, bu to'g'ri chiziq."]
 ];
+
+const BANK = BANK_RAW.map((r, i) => ({id:i, c:r[0], d:r[1], q:r[2], o:[r[3]].concat(r[4]), x:r[5]}));
 
 const LEVELS = [
   {max:6,  e:"🌱", t:"Rivojlanayotgan daraja", s:"Siz hozir poydevor qurayapsiz. Har bir mashq tezda natija beradi."},
@@ -149,6 +184,45 @@ const LEVELS = [
   {max:20, e:"👑", t:"A'lo daraja", s:"Deyarli xatosiz! Endi tezlik va murakkab masalalar ustida ishlash mumkin."}
 ];
 
+function shuffle(a) {
+  a = a.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+function getSeen() {
+  try { return JSON.parse(load("iq_seen") || "[]"); } catch (e) { return []; }
+}
+
+function buildQuiz() {
+  const seen = getSeen();
+  const used = [];
+  const chosen = [];
+  for (let d = 1; d <= 4; d++) {
+    const pool = BANK.filter(q => q.d === d);
+    const key = q => (seen.indexOf(q.id) >= 0 ? 2 : 0) + Math.random();
+    const picked = [];
+    Object.keys(CATS).forEach(c => {
+      const list = pool.filter(q => q.c === c).sort((a, b) => key(a) - key(b));
+      if (list.length) picked.push(list[0]);
+    });
+    const rest = pool.filter(q => picked.indexOf(q) < 0).sort((a, b) => key(a) - key(b));
+    if (rest.length) picked.push(rest[0]);
+    shuffle(picked).forEach(q => { chosen.push(q); used.push(q.id); });
+  }
+  let newSeen = seen.concat(used);
+  if (newSeen.length > 40) newSeen = used;
+  save("iq_seen", JSON.stringify(newSeen));
+  return chosen.map(q => {
+    const opts = shuffle(q.o.map((t, i) => ({t:t, ok:i === 0})));
+    return {c:q.c, d:q.d, q:q.q, x:q.x, o:opts.map(z => z.t), a:opts.findIndex(z => z.ok)};
+  });
+}
+
+let Q = [];
 let i = 0, score = 0, streak = 0, maxStreak = 0, left = LIMIT, timer = null, locked = false, t0 = 0, ans = [];
 let stat = {};
 const $ = id => document.getElementById(id);
@@ -164,6 +238,7 @@ function show(id) {
 }
 
 function startQuiz() {
+  Q = buildQuiz();
   i = 0; score = 0; streak = 0; maxStreak = 0; ans = []; t0 = Date.now();
   stat = {R:[0,0], M:[0,0], S:[0,0], F:[0,0]};
   show("quiz");
@@ -289,7 +364,7 @@ function finish() {
       '<ul class="tips lock"><li>Fikrlash uslubingiz: tezmi yoki puxtami</li><li>Har bir xatongiz sababi va yechimi</li><li>7 kunlik shaxsiy mashq rejasi</li><li>Qaytadan topshirib, o\'sishni solishtirish</li></ul>' +
       '<button class="btn" onclick="wantPro()">Shaxsiy tahlilni olish</button>' +
     '</div>' +
-    '<button class="btn" onclick="startQuiz()">🔄 Qayta topshirish</button>' +
+    '<button class="btn" onclick="startQuiz()">🔄 Yangi savollar bilan qayta topshirish</button>' +
     '<button class="btn ghost" onclick="share()">📤 Do\'stlarga ulashish</button>' +
     '<p class="note center">Natija taxminiy. Rasmiy IQ o\'lchovi emas.</p>';
   show("result");
