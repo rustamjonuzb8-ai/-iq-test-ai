@@ -2,597 +2,392 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>IQ TEST AI</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
-:root{--bg1:#1a0b2e;--bg2:#2d1458;--p:#8b5cf6;--p3:#c4b5fd;--card:rgba(255,255,255,.08);--line:rgba(255,255,255,.14);--ok:#34d399;--soft:#a78bfa;--txt:#f5f3ff;--mut:#b9aee0}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:radial-gradient(circle at 20% 0%,#4c1d95 0%,transparent 45%),linear-gradient(160deg,var(--bg2),var(--bg1));background-attachment:fixed;min-height:100vh;color:var(--txt);padding:env(safe-area-inset-top) 16px calc(env(safe-area-inset-bottom) + 28px)}
-.wrap{max-width:480px;margin:0 auto;padding-top:20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 10px 40px rgba(0,0,0,.3);margin-bottom:14px}
-.hidden{display:none!important}
-.center{text-align:center}
-.logo{font-size:56px;width:96px;height:96px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;border-radius:28px;background:linear-gradient(135deg,var(--p),#6d28d9);box-shadow:0 10px 30px rgba(139,92,246,.5)}
-h1{font-size:30px;letter-spacing:1px;margin-bottom:8px}
-h2{font-size:20px;line-height:1.45;margin-bottom:16px}
-h3{font-size:18px;margin-bottom:12px}
-.sub{color:var(--mut);margin-bottom:18px;line-height:1.5}
-.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:22px}
-.chips span{background:rgba(139,92,246,.2);border:1px solid rgba(167,139,250,.35);padding:8px 12px;border-radius:99px;font-size:13px}
-.btn{width:100%;border:0;border-radius:16px;padding:16px;font-size:17px;font-weight:700;color:#fff;background:linear-gradient(135deg,#8b5cf6,#6d28d9);box-shadow:0 8px 24px rgba(109,40,217,.45);cursor:pointer;margin-top:10px}
-.btn:active{transform:scale(.98)}
-.btn.ghost{background:var(--card);border:1px solid var(--line);box-shadow:none}
-.note{margin-top:14px;font-size:12px;color:var(--mut);line-height:1.5}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-weight:600;gap:8px}
-.tag{font-size:13px;background:rgba(139,92,246,.2);padding:6px 12px;border-radius:99px}
-.timer{background:rgba(139,92,246,.25);padding:6px 14px;border-radius:99px;min-width:56px;text-align:center}
-.timer.low{background:rgba(251,191,36,.25);color:#fde68a}
-.bar,.tbar{height:6px;background:rgba(255,255,255,.12);border-radius:9px;overflow:hidden}
-.bar{margin-bottom:14px}
-.tbar{margin-bottom:18px}
-#pbar,#tbar{height:100%;background:linear-gradient(90deg,var(--p),var(--p3));border-radius:9px;transition:width .4s}
-#tbar{transition:width 1s linear}
-.dots{letter-spacing:3px;color:var(--p3);font-size:12px;margin-bottom:10px}
-.opt{display:block;width:100%;text-align:left;background:rgba(255,255,255,.07);border:1.5px solid var(--line);color:var(--txt);border-radius:14px;padding:14px 16px;margin-bottom:10px;font-size:16px;line-height:1.4;cursor:pointer;transition:.2s}
-.opt:active{transform:scale(.98)}
-.opt.ok{background:rgba(52,211,153,.18);border-color:var(--ok)}
-.opt.soft{background:rgba(167,139,250,.18);border-color:var(--soft)}
-.opt[disabled]{pointer-events:none}
-.fb{margin-top:6px;padding:14px;border-radius:14px;background:rgba(139,92,246,.15);border:1px solid rgba(167,139,250,.3);line-height:1.5;font-size:14px}
-.fb b{display:block;margin-bottom:4px;font-size:15px}
-.emoji{font-size:48px;margin-bottom:6px}
-.score{font-size:64px;font-weight:800;background:linear-gradient(135deg,#fff,var(--p3));-webkit-background-clip:text;background-clip:text;color:transparent}
-.score span{font-size:28px;opacity:.7}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.stats div{background:rgba(139,92,246,.18);border-radius:16px;padding:12px 4px}
-.stats b{display:block;font-size:20px}
-.stats small{color:var(--mut);font-size:12px}
-.cat{margin-bottom:14px}
-.cat .r{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}
-.cat .b{height:10px;background:rgba(255,255,255,.1);border-radius:9px;overflow:hidden}
-.cat .b i{display:block;height:100%;background:linear-gradient(90deg,var(--p),var(--p3));border-radius:9px}
-.tips{list-style:none}
-.tips li{padding:10px 0;border-bottom:1px solid var(--line);line-height:1.5;font-size:15px}
-.tips li:last-child{border:0}
-.lock{opacity:.6}
-.lock li::before{content:"🔒 "}
-.free{background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.35);border-radius:14px;padding:14px;line-height:1.5;margin-bottom:12px;font-size:15px}
+  :root{
+    --bg1:#1a0b3d; --bg2:#3b1a7a; --card:rgba(255,255,255,.08);
+    --line:rgba(255,255,255,.18); --accent:#a77bff; --accent2:#7c4dff; --text:#fff; --muted:#cdbdf5;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;min-height:100vh;font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:var(--text);
+    background:linear-gradient(160deg,var(--bg1),var(--bg2));display:flex;justify-content:center}
+  #app{width:100%;max-width:480px;padding:20px 16px 32px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;backdrop-filter:blur(8px)}
+  h1{font-size:28px;margin:0 0 8px}
+  h2{font-size:20px;line-height:1.4;margin:0 0 18px}
+  p{color:var(--muted);line-height:1.5;margin:0 0 14px}
+  .btn{display:block;width:100%;border:0;border-radius:14px;padding:15px;font-size:17px;font-weight:600;color:#fff;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));cursor:pointer;margin-top:10px}
+  .btn.ghost{background:transparent;border:1px solid var(--line)}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:15px;color:var(--muted)}
+  .timer{font-weight:700;color:#fff;background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+  .bar{height:8px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden;margin-bottom:18px}
+  .bar>div{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#d2b8ff);transition:width .3s}
+  .opt{display:block;width:100%;text-align:left;padding:14px 16px;margin-bottom:10px;border-radius:14px;
+    border:1px solid var(--line);background:rgba(255,255,255,.05);color:#fff;font-size:17px;line-height:1.35;cursor:pointer}
+  .opt.sel{border-color:var(--accent);background:rgba(167,123,255,.28)}
+  .big{font-size:64px;font-weight:800;text-align:center;margin:6px 0;
+    background:linear-gradient(135deg,#fff,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .center{text-align:center}
+  .stat{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+  .stat b{color:#fff}
+  .tip{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);margin-bottom:8px;color:var(--muted);line-height:1.45}
+  .small{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.4}
 </style>
 </head>
 <body>
-<div class="wrap">
-
-<div id="start" class="card center">
-  <div class="logo">🧠</div>
-  <h1>IQ TEST AI</h1>
-  <p class="sub" id="hello">Mantiq, falsafa va psixologiya uyg'unlashgan fikrlash testi</p>
-  <div class="chips"><span>20 ta savol</span><span>5 daraja</span><span>108 ta savol bazasi</span><span>Har safar yangi savollar</span><span>📊 Shaxsiy xulosa</span></div>
-  <p class="sub" id="best"></p>
-  <button class="btn" onclick="startQuiz()">Testni boshlash</button>
-  <p class="note">Bu fikrlash qobiliyatini sinash uchun test. Rasmiy IQ o'lchovi yoki psixologik tashxis emas.</p>
-</div>
-
-<div id="quiz" class="hidden">
-  <div class="top"><span id="count">1/20</span><span id="streak" class="tag hidden"></span><span id="timer" class="timer">40</span></div>
-  <div class="bar"><div id="pbar"></div></div>
-  <div class="card">
-    <div class="tbar"><div id="tbar"></div></div>
-    <div class="dots" id="meta"></div>
-    <h2 id="qtext"></h2>
-    <div id="opts"></div>
-    <div id="fb" class="fb hidden"></div>
-    <button id="next" class="btn hidden" onclick="nextQ()">Keyingisi →</button>
-  </div>
-</div>
-
-<div id="result" class="hidden"></div>
-
-</div>
+<div id="app"></div>
 
 <script>
 const tg = window.Telegram && window.Telegram.WebApp;
-if (tg) {
-  tg.ready(); tg.expand();
-  try { tg.setHeaderColor("#1a0b2e"); tg.setBackgroundColor("#1a0b2e"); } catch (e) {}
-  const u = tg.initDataUnsafe && tg.initDataUnsafe.user;
-  if (u && u.first_name) document.getElementById("hello").textContent = "Salom, " + u.first_name + "! Mantiq, falsafa va psixologiya uyg'unlashgan test 👋";
-}
-function haptic(t) { try { tg.HapticFeedback.notificationOccurred(t); } catch (e) {} }
-function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
-function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+if (tg) { tg.ready(); tg.expand(); }
 
-const TIMES = [0, 40, 40, 50, 60, 60];
-const CATS = {
-  R: {n:"Raqamlar", e:"🔢"},
-  M: {n:"Mantiq", e:"🧩"},
-  S: {n:"So'z va tushuncha", e:"📚"},
-  F: {n:"Naqsh va shakl", e:"🔷"},
-  P: {n:"Falsafa va psixologiya", e:"🔮"}
-};
-const TIP = {
-  R: "Sonlar qatorida avval ayirmani, keyin nisbatni (×, ÷) tekshiring.",
-  M: "Mantiqiy masalada faktlarni ketma-ket yozib chiqing, javob o'zi ko'rinadi.",
-  S: "Tushunchalar orasidagi bog'lanishni gap bilan ayting: «X — Y uchun».",
-  F: "Naqshda nima takrorlanayotganini yoki o'sayotganini aniqlang.",
-  P: "Xulosa chiqarishdan oldin so'rang: dalil nima? Boshqacha tushuntirish bormi? Namuna yetarlimi?"
-};
+/* =====================================================================
+   SOZLAMALAR
+   ===================================================================== */
+const TOTAL_SEC = 25*60;                       // test vaqti (soniyada)
+const QUOTA = {tarix:4, hayot:4, mantiq:5, soz:3, fazo:4};   // har testda nechta savol (jami 20)
+const ANALYSIS_LINK = "https://t.me/Rustamjon4";             // "To'liq tahlil" tugmasi qayerga olib boradi
 
-/* Format: [kategoriya, daraja, savol, TO'G'RI javob, [noto'g'ri javoblar], tushuntirish] */
-const BANK_RAW = [
-  /* ===== 1-DARAJA ===== */
-  ["R",1,"Qatorni davom ettiring: 5, 10, 15, 20, ?","25",["30","22","24"],"Har safar 5 qo'shiladi."],
-  ["R",1,"Qatorni davom ettiring: 2, 4, 6, 8, ?","10",["12","9","11"],"Har safar 2 qo'shiladi."],
-  ["R",1,"Qatorni davom ettiring: 1, 3, 9, 27, ?","81",["54","36","72"],"Har bir son oldingisidan 3 baravar katta."],
-  ["R",1,"Qatorni davom ettiring: 100, 90, 80, 70, ?","60",["50","65","55"],"Har safar 10 ayriladi."],
-  ["M",1,"Barcha qushlar tuxum qo'yadi. Chumchuq qush. Demak, chumchuq...","Tuxum qo'yadi",["Sut beradi","Suzadi","Uchmaydi"],"Umumiy qoida har bir qushga tegishli."],
-  ["M",1,"Bugun chorshanba. 2 kundan keyin qaysi kun bo'ladi?","Juma",["Payshanba","Shanba","Seshanba"],"Chorshanba, payshanba, juma."],
-  ["M",1,"Sardor Ali'dan baland, Ali Vali'dan baland. Eng baland kim?","Sardor",["Ali","Vali","Aniqlab bo'lmaydi"],"Tartib: Sardor > Ali > Vali."],
-  ["M",1,"Bugun dushanba. Kecha qaysi kun edi?","Yakshanba",["Seshanba","Shanba","Juma"],"Dushanbadan oldingi kun yakshanba."],
-  ["S",1,"Qush : Uchish = Baliq : ?","Suzish",["Suv","Dengiz","Qanot"],"Qush uchadi, baliq suzadi: bu harakat turi."],
-  ["S",1,"Qaysi biri ortiqcha? Olma, Nok, Uzum, Sabzi","Sabzi",["Olma","Nok","Uzum"],"Uchtasi meva, sabzi esa sabzavot."],
-  ["S",1,"Issiq : Sovuq = Kun : ?","Tun",["Quyosh","Yoz","Soat"],"Bu qarama-qarshi tushunchalar juftligi."],
-  ["S",1,"Qaysi so'z «baland» ga ma'nodosh?","Yuksak",["Past","Keng","Yaqin"],"Yuksak va baland bir xil ma'noni bildiradi."],
-  ["F",1,"Naqshni davom ettiring: 🔺 🔵 🔺 🔵 🔺 ?","🔵",["🔺","🟢","⬛"],"Ikki shakl navbatma-navbat keladi."],
-  ["F",1,"Naqshni davom ettiring: 🔴 / 🔴🔴 / 🔴🔴🔴 / ?","🔴🔴🔴🔴",["🔴🔴","🔴🔴🔴🔴🔴","🔴"],"Har safar bitta doira qo'shiladi."],
-  ["F",1,"Strelkalar aylanmoqda: ⬆️ ➡️ ⬇️ ⬅️ ⬆️ ?","➡️",["⬇️","⬅️","⬆️"],"Har safar 90° soat strelkasi bo'yicha buriladi."],
-  ["F",1,"Oy fazalari: 🌑 🌓 🌕 ?","🌗",["🌑","🌒","🌔"],"Oy sikli: yangi oy, birinchi chorak, to'linoy, oxirgi chorak."],
-  ["P",1,"Yozda muzqaymoq sotuvi ham, suvda cho'milish ham ko'payadi. Muzqaymoq cho'milishga sabab bo'ladimi?","Yo'q, ikkalasiga ham issiq havo sabab",["Ha, muzqaymoq odamga kuch beradi","Ha, har doim shunday","Faqat bolalarda"],"Ikki hodisa birga ko'payishi biri ikkinchisiga sabab ekanini bildirmaydi."],
-  ["P",1,"Adolatli tangani 5 marta tashladingiz, har safar gerb tushdi. Oltinchi tashlashda gerb tushish ehtimoli qancha?","Taxminan 50%",["50% dan ancha kam","50% dan ancha ko'p","0%"],"Har bir tashlash mustaqil, tanga avvalgi natijani eslamaydi."],
-  ["P",1,"O'z fikrimizni tasdiqlovchi dalillarni ko'proq e'tiborga olish qanday ataladi?","Tasdiqlash xatosi",["Empatiya","Intuitsiya","Mantiqiy tahlil"],"Bu xato fikrni tekshirishga halaqit beradi."],
-  ["P",1,"«Hamma shunday qiladi, demak bu to'g'ri» fikri qaysi xatoga misol?","Ko'pchilikka tayanish xatosi",["Sababiy fikrlash","Chuqur tahlil","Induksiya"],"Ko'pchilik qilgani to'g'ri bo'lishini kafolatlamaydi."],
+/* =====================================================================
+   1) QO'LDA YOZILGAN SAVOLLAR  (yangi savol qo'shish uchun shu yerga qator qo'shing)
+   Format:  {t:"tarix", d:2, q:"Savol matni", o:["A","B","C","D"], a:0},
+     t = tarix | hayot | mantiq | soz | fazo
+     d = qiyinlik: 1 oson, 2 o'rta, 3 qiyin
+     a = to'g'ri javob o'rni: 0 = birinchi variant, 1 = ikkinchi, 2 = uchinchi, 3 = to'rtinchi
+   Variantlar testda har safar aralashtiriladi, shuning uchun to'g'ri javobni istalgan joyga qo'yaversangiz bo'ladi.
+   ===================================================================== */
+const BANK = [
 
-  /* ===== 2-DARAJA ===== */
-  ["R",2,"Qatorni davom ettiring: 2, 3, 5, 8, 12, ?","17",["15","16","18"],"Ayirmalar 1, 2, 3, 4 bo'lib o'sadi, keyingisi +5."],
-  ["R",2,"Bir sonni 4 ga ko'paytirib, 6 ni ayirsak 22 chiqdi. Bu qaysi son?","7",["5","6","8"],"22 + 6 = 28, 28 ÷ 4 = 7."],
-  ["R",2,"Qatorni davom ettiring: 1, 4, 9, 16, 25, ?","36",["30","35","49"],"Bular 1², 2², 3², 4², 5², keyingisi 6² = 36."],
-  ["R",2,"Qatorni davom ettiring: 2, 5, 11, 23, ?","47",["46","35","48"],"Har safar ×2 va +1: 23 × 2 + 1 = 47."],
-  ["M",2,"Ali Vali'dan tez yuguradi. Sardor Ali'dan sekin, lekin Vali'dan tez. Eng sekin yuguruvchi kim?","Vali",["Ali","Sardor","Aniqlab bo'lmaydi"],"Tartib: Ali > Sardor > Vali."],
-  ["M",2,"Agar yomg'ir yog'sa, yer ho'l bo'ladi. Yer ho'l. Bundan yomg'ir yog'gan degan xulosa chiqadimi?","Yo'q, yer boshqa sabab bilan ham ho'l bo'lishi mumkin",["Ha, har doim","Faqat qishda","Faqat kechasi"],"Ho'llikning boshqa sabablari ham bor: sug'orish, quvur va hokazo."],
-  ["M",2,"Ota o'g'lidan 25 yosh katta. 10 yildan keyin ota o'g'lidan necha yosh katta bo'ladi?","25",["35","15","10"],"Yosh farqi hech qachon o'zgarmaydi."],
-  ["M",2,"Barcha mushuklar hayvon. Ba'zi hayvonlar yirtqich. «Barcha mushuklar yirtqich» deyish mumkinmi?","Yo'q, bu xulosa kelib chiqmaydi",["Ha, albatta","Faqat uy mushuklari uchun","Faqat yovvoyi mushuklar uchun"],"Yirtqich hayvonlar orasida mushuklar bo'lishi shart emas."],
-  ["S",2,"Shifokor : Kasalxona = O'qituvchi : ?","Maktab",["Kitob","Talaba","Dars"],"Kasb egasi va uning ish joyi."],
-  ["S",2,"Qaysi so'z ortiqcha? Mushuk, It, Ot, Stol","Stol",["Mushuk","It","Ot"],"Uchtasi jonivor, stol esa jonsiz narsa."],
-  ["S",2,"Ko'z : Ko'rish = Quloq : ?","Eshitish",["Gapirish","Hidlash","Yurish"],"A'zo va uning vazifasi."],
-  ["S",2,"Ko'p : Oz = Keng : ?","Tor",["Katta","Uzun","Yaqin"],"Bu qarama-qarshi tushunchalar juftligi."],
-  ["S",2,"Optimist : «Stakan yarim to'la» = Pessimist : ?","«Stakan yarim bo'sh»",["«Stakan siniq»","«Stakan to'la»","«Stakan toza»"],"Bir xil holatga ikki xil qarash."],
-  ["F",2,"Burchaklar soni ortib bormoqda: 🔺(3) ◼️(4) ⬟(5) ?","⬢ (6 burchak)",["⭕","🔺","◼️"],"3, 4, 5, keyingisi 6 burchakli shakl."],
-  ["F",2,"Naqshni davom ettiring: 🟣🟣🔵 🟣🟣🔵 🟣🟣 ?","🔵",["🟣","🟢","🔴"],"Har uchlikda ikki binafsha va bitta ko'k keladi."],
-  ["F",2,"Naqshni davom ettiring: 1️⃣ 3️⃣ 5️⃣ 7️⃣ ?","9️⃣",["8️⃣","🔟","6️⃣"],"Har safar 2 qo'shiladi."],
-  ["F",2,"Kvadratni diagonal bo'yicha ikkiga bo'lsak, qanday shakllar hosil bo'ladi?","Ikkita teng uchburchak",["Ikkita doira","Ikkita trapetsiya","Uchburchak va to'rtburchak"],"Diagonal kvadratni ikkita teng to'g'ri burchakli uchburchakka ajratadi."],
-  ["P",2,"Siz qimmat chiptaga pul to'lab, filmni yoqtirmadingiz. Qaysi qaror oqilona?","Yoqmasa chiqib ketish, to'langan pul baribir qaytmaydi",["Pulim kuymasin deb oxirigacha ko'rish","Chiptani qaytarib berishni talab qilish","Boshqa film uchun yana pul to'lash"],"Allaqachon sarflangan pul (sunk cost) kelajak qaroringizga ta'sir qilmasligi kerak."],
-  ["P",2,"Yangi dori sinovida 10 kishidan 9 tasi tuzaldi, lekin dori ichmagan guruh bilan solishtirilmadi. Nega bu dalil kuchsiz?","Dorisiz ham ko'pchilik tuzalishi mumkin edi, solishtirish yo'q",["10 kishi juda ko'p","Dori narxi noma'lum","Tuzalishni o'lchab bo'lmaydi"],"Nazorat guruhisiz dori ta'sirini tabiiy tuzalishdan ajratib bo'lmaydi."],
-  ["P",2,"Mashhur odam biror mahsulotni maqtadi va siz uni sifatli deb o'yladingiz. Bu qaysi xato?","Avtoritetga ishonish xatosi",["Tasdiqlash xatosi","Sunk cost","Tasodifiy tanlov"],"Mashhurlik mahsulot sifatini isbotlamaydi."],
-  ["P",2,"Do'konda avval 2 000 000 so'mlik telefon ko'rsatilib, keyin 1 200 000 so'mligi taklif qilindi va u arzon tuyuldi. Bu qaysi hodisa?","Langar effekti",["Halo effekti","Tasdiqlash xatosi","Yo'qotishdan qochish"],"Birinchi aytilgan raqam keyingi baholashga langar bo'lib ta'sir qiladi."],
-  ["P",2,"Chiroyli odamni avtomatik ravishda aqlli va mehribon deb o'ylash qaysi hodisa?","Halo effekti",["Langar effekti","Tasdiqlash xatosi","Yo'qotishdan qochish"],"Bitta ijobiy xususiyat boshqa sifatlarga ham ta'sir qiladi."],
+ /* ---------- TARIX ---------- */
+ {t:"tarix", d:2, q:"Algebra fanining asoschisi hisoblangan, Xorazmda tug'ilgan buyuk olim kim?", o:["Ibn Sino","Al-Xorazmiy","Beruniy","Farobiy"], a:1},
+ {t:"tarix", d:1, q:"Samarqandda mashhur rasadxona qurdirgan hukmdor-olim kim?", o:["Amir Temur","Ulug'bek","Bobur","Shayboniyxon"], a:1},
+ {t:"tarix", d:2, q:"«Boburnoma» muallifi Bobur keyinchalik qaysi mamlakatda buyuk sulolaga asos soldi?", o:["Eron","Hindiston","Misr","Turkiya"], a:1},
+ {t:"tarix", d:2, q:"Qaysi biri boshqalardan keyin paydo bo'lgan: Bosmaxona, Telegraf, Telefon, Internet?", o:["Bosmaxona","Telegraf","Telefon","Internet"], a:3},
+ {t:"tarix", d:1, q:"Ibn Sino «Tib qonuni» asarida qaysi sohani tizimlashtirgan?", o:["Tibbiyot","Harbiy san'at","Dengizchilik","Dehqonchilik"], a:0},
+ {t:"tarix", d:2, q:"Beruniy qaysi ilmiy ishi bilan mashhur?", o:["Yer radiusini ancha aniq hisoblagan","Bosmaxonani ixtiro qilgan","Kompasni kashf etgan","Qog'ozni ixtiro qilgan"], a:0},
+ {t:"tarix", d:1, q:"Amir Temur davlatining poytaxti qaysi shahar bo'lgan?", o:["Buxoro","Samarqand","Xiva","Toshkent"], a:1},
+ {t:"tarix", d:2, q:"Buyuk Ipak yo'li asosan qaysi hududlarni bog'lagan?", o:["Xitoy va O'rta yer dengizi mamlakatlari","Hindiston va Janubiy Afrika","Amerika va Yevropa","Yaponiya va Avstraliya"], a:0},
+ {t:"tarix", d:1, q:"Alisher Navoiy qaysi ikki tilda ijod qilgani bilan mashhur?", o:["Turkiy va fors","Arab va yunon","Rus va ingliz","Xitoy va yapon"], a:0},
+ {t:"tarix", d:1, q:"Minorai Kalon qaysi shaharda joylashgan?", o:["Buxoro","Xiva","Qarshi","Termiz"], a:0},
+ {t:"tarix", d:2, q:"Al-Farg'oniy (Alfraganus) qaysi fan bo'yicha asarlari bilan Yevropada ham mashhur bo'lgan?", o:["Astronomiya","Tilshunoslik","Harbiy ish","Dehqonchilik"], a:0},
+ {t:"tarix", d:2, q:"Imom Buxoriy qaysi ishi bilan mashhur?", o:["Hadislar to'plamini tuzgan","Algebraga asos solgan","Rasadxona qurgan","Dostonlar yozgan"], a:0},
+ {t:"tarix", d:2, q:"Zahiriddin Muhammad Bobur qaysi shaharda tug'ilgan?", o:["Andijon","Samarqand","Hirot","Kobul"], a:0},
+ {t:"tarix", d:3, q:"IX asrdagi mashhur ilmiy markaz «Bayt ul-Hikma» (Donishmandlik uyi) qaysi shaharda bo'lgan?", o:["Bag'dod","Damashq","Qohira","Istanbul"], a:0},
+ {t:"tarix", d:3, q:"Samarqandda qog'oz ishlab chiqarish sirini o'rta asrlarda qaysi xalqdan o'rganishgan?", o:["Xitoyliklardan","Rimliklardan","Hindlardan","Misrliklardan"], a:0},
+ {t:"tarix", d:2, q:"Jaloliddin Manguberdi qaysi bosqinchilarga qarshi jang qilgan?", o:["Chingizxon qo'shinlariga","Rim legionlariga","Frank qo'shinlariga","Hind sultonlariga"], a:0},
+ {t:"tarix", d:1, q:"Birinchi bo'lib kosmosga uchgan inson kim?", o:["Yuriy Gagarin","Nil Armstrong","Albert Eynshteyn","Ilon Mask"], a:0},
+ {t:"tarix", d:2, q:"XV asrda Yevropada kitob chop etishni tezlashtirgan bosma stanokni kim yaratgan?", o:["Gutenberg","Nyuton","Galiley","Edison"], a:0},
+ {t:"tarix", d:1, q:"O'zbekiston Respublikasi mustaqilligini qaysi yilda e'lon qilgan?", o:["1991","1985","1995","2001"], a:0},
+ {t:"tarix", d:3, q:"Samarqandning qadimgi nomi qaysi?", o:["Marokanda","Poykand","Naxshab","Kesh"], a:0},
 
-  /* ===== 3-DARAJA ===== */
-  ["R",3,"Qatorni davom ettiring: 1, 2, 6, 24, 120, ?","720",["240","600","840"],"Ko'paytuvchilar 2, 3, 4, 5, keyingisi ×6."],
-  ["R",3,"Soat 3:15 bo'lganda soat va minut millari orasidagi burchak necha gradus?","7,5°",["0°","15°","22,5°"],"Minut mili 90° da, soat mili 3-raqamdan 7,5° o'tgan: 90 − 82,5 = 7,5°."],
-  ["R",3,"Qatorni davom ettiring: 2, 6, 12, 20, 30, ?","42",["36","40","44"],"Ayirmalar 4, 6, 8, 10, keyingisi 12: 30 + 12 = 42."],
-  ["R",3,"Qatorni davom ettiring: 1, 2, 4, 7, 11, 16, ?","22",["21","23","20"],"Ayirmalar 1, 2, 3, 4, 5, keyingisi 6: 16 + 6 = 22."],
-  ["R",3,"Qatorni davom ettiring: 1, 8, 27, 64, ?","125",["100","216","81"],"Bular 1³, 2³, 3³, 4³, keyingisi 5³ = 125."],
-  ["M",3,"Agar A bo'lsa, B bo'ladi. B bo'lmadi. Bundan nima xulosa chiqadi?","A bo'lmagan",["A bo'lgan","B baribir bo'ladi","Aniqlab bo'lmaydi"],"A bo'lganida B ham bo'lardi. B yo'q, demak A ham yo'q."],
-  ["M",3,"Ikki sonning yig'indisi 10, ko'paytmasi 21. Bu sonlar qaysilar?","3 va 7",["2 va 8","4 va 6","5 va 5"],"3 + 7 = 10 va 3 × 7 = 21."],
-  ["M",3,"5 ta mashina 5 ta detalni 5 daqiqada ishlab chiqaradi. 100 ta mashina 100 ta detalni necha daqiqada ishlab chiqaradi?","5 daqiqa",["1 daqiqa","20 daqiqa","100 daqiqa"],"Har bir mashina 5 daqiqada 1 ta detal qiladi."],
-  ["M",3,"Qutida 3 ta olma va 2 ta nok bor. Ko'zni yumib eng kamida nechta meva olsangiz, kamida bitta olma chiqishi kafolatlanadi?","3",["2","4","5"],"Eng yomon holatda dastlabki 2 tasi nok bo'ladi, uchinchisi albatta olma."],
-  ["M",3,"A B dan katta, C A dan kichik, C B dan katta. Kattadan kichikka tartib qanday?","A, C, B",["A, B, C","B, A, C","C, A, B"],"A > C va C > B, demak A > C > B."],
-  ["S",3,"Tezlik : km/soat = Harorat : ?","Gradus",["Issiq","Termometr","Qish"],"Kattalik va uning o'lchov birligi."],
-  ["S",3,"Qaysi so'z ortiqcha? Kvadrat, Uchburchak, Doira, Kub","Kub",["Kvadrat","Uchburchak","Doira"],"Uchtasi tekis shakl, kub esa hajmli jism."],
-  ["S",3,"Qalam : Yozish = Pichoq : ?","Kesish",["Oshxona","Temir","O'tkir"],"Asbob va uning vazifasi."],
-  ["S",3,"Qaysi so'z «oz so'zli, lekin mazmunli» ma'nosiga mos?","Lo'nda",["Cho'zma","Murakkab","Sust"],"Lo'nda gap qisqa va aniq bo'ladi."],
-  ["F",3,"Naqshni davom ettiring: 🔺🔵 / 🔵🔺 / 🔺🔵 / ?","🔵🔺",["🔺🔵","🔺🔺","🔵🔵"],"Juftlik har safar o'rin almashtiradi."],
-  ["F",3,"Oy fazalari: 🌑 🌒 🌓 🌔 ?","🌕",["🌑","🌖","🌗"],"Oy asta-sekin to'lib boradi, keyingisi to'linoy."],
-  ["F",3,"Naqshni davom ettiring: ⚪ / ⚪⚪ / ⚪⚪⚪⚪ / ?","8 ta ⚪",["6 ta ⚪","5 ta ⚪","16 ta ⚪"],"Har safar doiralar soni 2 baravar ko'payadi."],
-  ["F",3,"Kub sirtining hammasi bo'yalib, 27 ta kichik kubga bo'lindi. Hech bir yog'i bo'yalmagan kichik kublar nechta?","1",["0","6","8"],"Faqat eng markazdagi bitta kub butunlay ichkarida qoladi."],
-  ["F",3,"Soat 9:00 dan 9:20 gacha minut mili necha gradusga buriladi?","120°",["60°","90°","20°"],"Har daqiqada 6°, 20 × 6 = 120°."],
-  ["P",3,"3 eshikdan birining orqasida mashina bor. Siz 1-eshikni tanladingiz. Mashina qayerdaligini biladigan boshlovchi mashina yo'q 3-eshikni ochdi va tanlovingizni almashtirishni taklif qildi. Eng yaxshi qaror?","Almashtirish: yutish ehtimoli 2/3 bo'ladi",["Almashtirmaslik: ehtimol 2/3 bo'ladi","Farqi yo'q, ehtimol 50 va 50","Ehtimolni aniqlab bo'lmaydi"],"Dastlabki tanlov 1/3 ehtimolli. Qolgan 2/3 ehtimol ochilmagan boshqa eshikka o'tadi."],
-  ["P",3,"Dilnoza 30 yoshda, tadbirkor, texnologiyaga qiziqadi. Qaysi ehtimol kattaroq (yoki kam emas)?","Dilnoza o'qituvchi",["Dilnoza o'qituvchi va IT kurslari tashkilotchisi","Ikkalasi albatta teng","Aniqlab bo'lmaydi"],"Ikki shartning birgalikda bajarilishi bittasining o'zidan ko'p bo'lishi mumkin emas."],
-  ["P",3,"Oddiy adolatli ruletkada ketma-ket 6 marta qizil chiqdi. Keyingisida qora chiqish ehtimoli qanday?","Avvalgidek, har aylanish mustaqil",["Oshgan","Kamaygan","Nolga teng"],"Tasodifiy hodisalar o'tgan natijani eslamaydi (qimorboz xatosi)."],
-  ["P",3,"Faqat omadli tadbirkorlarning hikoyalarini o'qib, «bizniki ham albatta o'xshaydi» deyish qaysi xato?","Omon qolganlar xatosi",["Langar effekti","Tasdiqlash xatosi","Sunk cost"],"Muvaffaqiyatsiz bo'lganlar haqida gap bo'lmaydi, shuning uchun manzara buziladi."],
-  ["P",3,"100 000 so'mni yo'qotish o'sha miqdorni topishdan kuchliroq his qilinishi qaysi hodisa?","Yo'qotishdan qochish",["Langar effekti","Standart tanlov effekti","Ko'pchilikka ergashish"],"Odamlar yo'qotishni teng foydadan taxminan ikki baravar kuchli his qiladi."],
+ /* ---------- HAYOTIY FIKRLASH ---------- */
+ {t:"hayot", d:2, q:"Reklama: «Mashhur futbolchi bu sharbatni ichadi, demak u eng foydali». Bu fikrdagi asosiy xato nima?", o:["Mashhurlik sifatni isbotlamaydi","Futbolchilar sharbat ichmaydi","Sharbat foydali bo'lolmaydi","Hech qanday xato yo'q"], a:0},
+ {t:"hayot", d:2, q:"Shifokor: «Dorini kuniga ikki marta, har 12 soatda iching». Qaysi jadval to'g'ri?", o:["08:00 va 20:00","08:00 va 12:00","08:00 va 09:00","Faqat ertalab"], a:0},
+ {t:"hayot", d:3, q:"Yozda shaharda muzqaymoq sotuvi oshgan oylarda suvda cho'kish holatlari ham ko'paygan. Bundan qaysi xulosa to'g'ri?", o:["Ikkalasining ko'payishiga ham issiq havo sabab bo'lishi mumkin","Muzqaymoq yeyish odamni cho'ktiradi","Cho'kish holatlari muzqaymoq narxini oshiradi","Muzqaymoq sotuvini cheklash kerak"], a:0},
+ {t:"hayot", d:2, q:"Telefoningizga xabar keldi: «24 soat ichida pulingizni ikki baravar qilamiz, hoziroq karta raqamingizni yuboring». Eng oqilona qadam qaysi?", o:["Aldov ehtimoli yuqori: ma'lumot bermay, xabarni o'chirish","Tezroq yuborish, imkoniyat qochmasin","Do'stlarga ham yuborish","Faqat karta raqamini yuborib, parolni yashirish"], a:0},
+ {t:"hayot", d:1, q:"Ijtimoiy tarmoqda «Ertaga hamma maktablar yopiladi» degan xabar tarqaldi. Birinchi navbatda nima qilish to'g'ri?", o:["Rasmiy e'lon yoki maktabdan tekshirish","Xabarni darhol hammaga yuborish","Hech narsa qilmay, ishonib qolish","Kim yozganini bilmay izoh yozish"], a:0},
+ {t:"hayot", d:2, q:"Tanga ketma-ket 5 marta gerb tomoni bilan tushdi. Adolatli tanga keyingi tashlashda qanday tushadi?", o:["Har safargidek, ikki tomon ham teng ehtimolli","Albatta raqam tomoni bilan","Albatta yana gerb tomoni bilan","Gerb tushish ehtimoli kamroq"], a:0},
+ {t:"hayot", d:2, q:"Sotuvchi: «Faqat bugun chegirma, o'ylashga vaqt yo'q!» Eng oqilona qaror qaysi?", o:["Shoshilmay, narxni boshqa joyda solishtirib ko'rish","Darhol xarid qilish","Qarz olib bo'lsa ham olish","Sotuvchining aytganiga so'zsiz ishonish"], a:0},
+ {t:"hayot", d:3, q:"Bir maqolada ba'zi muvaffaqiyatli tadbirkorlar o'qishni tashlagani yozilgan. Bundan «o'qishni tashlash muvaffaqiyatga olib keladi» degan xulosa nega ishonchsiz?", o:["O'qishni tashlab, muvaffaqiyatsiz bo'lganlar hisobga olinmagan","Tadbirkorlar hech qachon o'qimaydi","Maqolalar doim yolg'on yozadi","O'qishning umuman foydasi yo'q"], a:0},
+ {t:"hayot", d:2, q:"Uchrashuv soat 10:00 da. Yo'lga 40 daqiqa ketadi, joyida 10 daqiqa oldin bo'lmoqchisiz. Tayyorlanishga 20 daqiqa kerak. Tayyorlanishni eng kechi bilan nechada boshlashingiz kerak?", o:["08:50","09:10","09:30","08:30"], a:0},
+ {t:"hayot", d:1, q:"Qaysi parol eng xavfsiz?", o:["Tasodifiy harf, raqam va belgilardan iborat uzun parol","Tug'ilgan kuningiz","123456","Ismingiz"], a:0},
+ {t:"hayot", d:2, q:"Uyga qaytdingiz: deraza ochiq, stol ustidagi qog'ozlar yerda, lekin hech narsa yo'qolmagan. Eng mantiqiy dastlabki taxmin qaysi?", o:["Shamol esgan","O'g'ri kirgan","Qo'shni kirgan","Hech narsa aytib bo'lmaydi, shuning uchun politsiya chaqiriladi"], a:0},
+ {t:"hayot", d:2, q:"Telefon xotirasi to'ldi, lekin barcha rasmlar sizga muhim. Eng oqilona yechim qaysi?", o:["Rasmlarni bulutli xotira yoki kompyuterga nusxalab, keyin telefondan o'chirish","Barcha rasmlarni o'chirib tashlash","Telefonni qayta-qayta o'chirib yoqish","Rasmlarni boshqa ilovaga ko'chirmasdan o'chirish"], a:0},
+ {t:"hayot", d:2, q:"Do'stingiz: «Hamma mening fikrimga qo'shiladi, demak men haq». Bu fikrdagi asosiy xato nima?", o:["Ko'pchilik qo'shilishi fikr to'g'riligini isbotlamaydi","Do'stlar hech qachon xato qilmaydi","Fikr bildirish mumkin emas","Hech qanday xato yo'q"], a:0},
+ {t:"hayot", d:3, q:"Firma e'lon qildi: «80% mijoz mamnun». Bu raqamga ishonishdan oldin yana nimani bilish eng muhim?", o:["So'rovda nechta va qanday mijoz qatnashgani","Firma logotipining rangi","Direktorning yoshi","Reklama necha soniya davom etgani"], a:0},
 
-  /* ===== 4-DARAJA ===== */
-  ["R",4,"Qatorni davom ettiring: 2, 6, 7, 21, 22, 66, ?","67",["132","69","88"],"Navbatma-navbat ×3 va +1."],
-  ["R",4,"Qatorni davom ettiring: 3, 5, 9, 17, 33, ?","65",["49","57","66"],"Ayirmalar 2, 4, 8, 16, keyingisi 32: 33 + 32 = 65."],
-  ["R",4,"Qatorni davom ettiring: 1, 1, 2, 3, 5, 8, 13, ?","21",["20","24","26"],"Har bir son oldingi ikkitasining yig'indisi: 8 + 13 = 21."],
-  ["R",4,"Qatorni davom ettiring: 4, 9, 25, 49, ?","121",["100","81","169"],"Bular tub sonlarning kvadrati: 2², 3², 5², 7², keyingisi 11² = 121."],
-  ["M",4,"Ikki ota va ikki o'g'il bir-bittadan olma yedi. Jami 3 ta olma yeyildi. Bu qanday bo'lishi mumkin?","Uch kishi: bobo, ota va o'g'il",["Bittasi yemagan","Savol xato","Biri ikkita yegan"],"Ota ham o'g'il bo'lishi mumkin: bobo, ota, o'g'il jami 3 kishi."],
-  ["M",4,"Barcha A lar B. Hech bir B C emas. Bundan qaysi xulosa to'g'ri?","Hech bir A C emas",["Ba'zi A lar C","Barcha C lar A","Aniqlab bo'lmaydi"],"A lar B ning ichida, B larda esa C yo'q, demak A larda ham C yo'q."],
-  ["M",4,"Ota va o'g'lining yoshi yig'indisi 50. Ota o'g'ildan 4 baravar katta. O'g'il necha yoshda?","10",["8","12","15"],"10 + 40 = 50, 40 esa 10 ning 4 baravari."],
-  ["M",4,"Ko'prikdan 4 kishi o'tadi: 1, 2, 5, 10 daqiqada. Bir vaqtda ko'pi bilan 2 kishi o'tadi, fonar bitta. Hamma o'tishi uchun eng kam vaqt?","17 daqiqa",["19 daqiqa","15 daqiqa","21 daqiqa"],"1 va 2 o'tadi (2), 1 qaytadi (1), 5 va 10 o'tadi (10), 2 qaytadi (2), 1 va 2 o'tadi (2): jami 17."],
-  ["M",4,"3 ta qutiga «Olma», «Nok», «Aralash» yorlig'i yopishtirilgan, lekin hammasi NOTO'G'RI. Qaysi qutidan bitta meva olib, hamma yorliqni to'g'rilash mumkin?","«Aralash» yorlig'idagi qutidan",["«Olma» yorlig'idagi qutidan","«Nok» yorlig'idagi qutidan","Istalgan qutidan bo'ladi"],"«Aralash» yorlig'i xato, demak u quti aralash emas, bitta turdagi. Chiqqan meva qolganini ham aniqlab beradi."],
-  ["S",4,"Qaysi so'z ortiqcha? Qo'rg'oshin, Mis, Temir, Shisha","Shisha",["Qo'rg'oshin","Mis","Temir"],"Uchtasi metall, shisha esa metall emas."],
-  ["S",4,"Ochlik : Ovqat = Chanqoqlik : ?","Suv",["Qand","Non","Tuz"],"Ehtiyoj va uni qondiradigan narsa."],
-  ["S",4,"Agar ba'zi shifokorlar yozuvchi va barcha yozuvchilar kitob o'qisa, qaysi xulosa to'g'ri?","Ba'zi shifokorlar kitob o'qiydi",["Barcha shifokorlar kitob o'qiydi","Hech bir shifokor kitob o'qimaydi","Barcha yozuvchilar shifokor"],"Yozuvchi bo'lgan shifokorlar kitob o'qiydi."],
-  ["S",4,"Nuqta : Chiziq = Chiziq : ?","Yuza",["Aylana","Nuqta","Hajm"],"Har bir keyingisi bir o'lchamga ko'proq: nuqtadan chiziq, chiziqdan yuza."],
-  ["F",4,"Uchburchak sonlar: 1, 3, 6, ?","10",["9","12","8"],"Ayirmalar 2, 3, 4 bo'lib o'sadi: 6 + 4 = 10."],
-  ["F",4,"Kubning nechta qirrasi bor?","12",["6","8","16"],"Kubda 6 yoq, 8 uch va 12 qirra bor."],
-  ["F",4,"Soat roppa-rosa 6:00 bo'lganda soat va minut millari orasidagi burchak necha gradus?","180°",["90°","120°","150°"],"Millar qarama-qarshi tomonga qaragan, bu to'g'ri chiziq."],
-  ["F",4,"Qog'oz varag'ini 3 marta ikkiga bukib, o'rtasiga bitta teshik ochdik. Varaq ochilganda nechta teshik bo'ladi?","8",["3","6","4"],"3 marta bukilsa 2 × 2 × 2 = 8 qatlam bo'ladi, har qatlamda bitta teshik."],
-  ["P",4,"Orolda rostgo'ylar doim rost, yolg'onchilar doim yolg'on gapiradi. Orol aholisidan biri «Men yolg'onchiman» dedi. Bu mumkinmi?","Yo'q, bu gapni na rostgo'y, na yolg'onchi ayta oladi",["Ha, u yolg'onchi bo'lsa","Ha, u rostgo'y bo'lsa","Faqat kechasi"],"Rostgo'y bo'lsa gapi yolg'on bo'lib qoladi, yolg'onchi bo'lsa gapi rost bo'lib qoladi: ikkalasi qarama-qarshilik."],
-  ["P",4,"4 ta kartaning bir tomonida harf, ikkinchisida son. Qoida: «Agar bir tomonda unli harf bo'lsa, ikkinchi tomonda juft son bo'ladi». Ko'rinib turgani: A, K, 4, 7. Qoidani tekshirish uchun qaysilarni ochish kerak?","A va 7",["A va 4","K va 4","Hammasini"],"A ni qoida bajarilishi uchun, 7 ni esa ichida unli harf yo'qligini tekshirish uchun ochamiz. 4 va K qoidani buza olmaydi."],
-  ["P",4,"Kasallik 1000 kishidan 1 tasida bor. Test 99% aniq (sog'lom odamda xato musbat 1%). Sizning testingiz musbat chiqdi. Kasal bo'lish ehtimoli taxminan qancha?","Taxminan 9%",["99%","50%","1%"],"1000 kishidan ~1 ta haqiqiy musbat va ~10 ta soxta musbat chiqadi: 1 / 11 ≈ 9%. Kam uchraydigan holatlarda bu muhim."],
-  ["P",4,"Katta yong'inlarda o't o'chiruvchilar ko'proq qatnashadi va zarar ham katta bo'ladi. Demak o't o'chiruvchilar zararni oshiradimi?","Yo'q, ikkalasiga ham yong'in kattaligi sabab",["Ha, ular suv bilan zarar keltiradi","Ha, har doim","Faqat tunda"],"Uchinchi omil (yong'in kattaligi) ikkala hodisani ham keltirib chiqaradi."],
-  ["P",4,"«Agar siz biz bilan bo'lmasangiz, demak bizga qarshisiz» fikri qaysi xatoga misol?","Yolg'on ikki tanlov",["Aylana dalil","Shaxsga hujum","Omon qolganlar xatosi"],"Orada betaraflik va boshqa variantlar ham bor."],
+ /* ---------- MANTIQ ---------- */
+ {t:"mantiq", d:3, q:"Men barcha qo'shnilarim bilan salomlashaman. Karim mening qo'shnim emas. Karim bilan salomlashishim haqida nima deyish mumkin?", o:["Albatta salomlashaman","Salomlashmayman","Buni aniq aytib bo'lmaydi","Karim yomon odam"], a:2},
+ {t:"mantiq", d:3, q:"Barcha ustozlar bilimli. Ayrim bilimli odamlar kamtar. Qaysi xulosa to'g'ri?", o:["Barcha ustozlar kamtar","Ustozlarning kamtarligi bu gaplardan aniq kelib chiqmaydi","Hech bir ustoz kamtar emas","Barcha kamtarlar ustoz"], a:1},
+ {t:"mantiq", d:3, q:"Do'kon narxni avval 50% ga oshirdi, keyin «aksiya» deb 50% ga tushirdi. Yakuniy narx dastlabki narxga nisbatan qanday?", o:["Dastlabkidan arzon","Aynan dastlabkidek","Dastlabkidan qimmat","Aniqlab bo'lmaydi"], a:0},
+ {t:"mantiq", d:3, q:"Ikki soqchidan biri doim rost, biri doim yolg'on gapiradi. Biri xavfsiz eshikni qo'riqlaydi. Qaysi bitta savol sizga to'g'ri yo'lni ko'rsatadi?", o:["«Siz rostmisiz?»","«Boshqa soqchi qaysi eshikni xavfsiz deydi?»","«Bugun ob-havo qanday?»","«Siz qaysi eshikni qo'riqlaysiz?»"], a:1},
+ {t:"mantiq", d:3, q:"Uchta qutiga «olma», «nok», «aralash» yozuvlari yopishtirilgan, lekin hamma yozuv noto'g'ri. «Olma» yozuvli qutini ochsangiz, nok chiqdi. «Nok» yozuvli qutida nima bor?", o:["Olma","Nok","Olma va nok aralash","Bo'sh"], a:2},
+ {t:"mantiq", d:2, q:"Barcha chinorlar daraxt. Barcha daraxtlar o'simlik. Qaysi xulosa to'g'ri?", o:["Barcha chinorlar o'simlik","Barcha o'simliklar chinor","Hech bir daraxt o'simlik emas","Barcha daraxtlar chinor"], a:0},
+ {t:"mantiq", d:3, q:"Agar yomg'ir yog'sa, yer ho'l bo'ladi. Yer ho'l. Bundan nima kelib chiqadi?", o:["Yomg'ir yog'gan","Yomg'ir yog'magan","Aniq xulosa chiqarib bo'lmaydi","Yer quruq"], a:2},
+ {t:"mantiq", d:3, q:"Agar Sardor kech qolsa, yig'ilish boshlanmaydi. Yig'ilish boshlandi. Bundan nima kelib chiqadi?", o:["Sardor kech qolmagan","Sardor kech qolgan","Sardor kelmagan","Aniqlab bo'lmaydi"], a:0},
+ {t:"mantiq", d:2, q:"Ayrim shifokorlar sportchi. Barcha sportchilar sog'lom. Qaysi xulosa to'g'ri?", o:["Ayrim shifokorlar sog'lom","Barcha shifokorlar sog'lom","Hech bir shifokor sog'lom emas","Barcha sog'lom odamlar sportchi"], a:0},
+ {t:"mantiq", d:3, q:"Barcha mashinalarning dvigateli bor. Velosiped mashina emas. Velosiped haqida nima deyish mumkin?", o:["Dvigateli bor-yo'qligi bu gaplardan aniq kelib chiqmaydi","Dvigateli yo'q","Dvigateli bor","Mashinadan tez yuradi"], a:0},
 
-  /* ===== 5-DARAJA ===== */
-  ["R",5,"Qatorni davom ettiring: 2, 12, 36, 80, 150, ?","252",["240","256","210"],"Hadlar n² × (n+1): 1²·2, 2²·3, 3²·4, 4²·5, 5²·6, keyingisi 6²·7 = 252."],
-  ["R",5,"4 ta ketma-ket toq sonning yig'indisi 64. Eng kattasi qaysi?","19",["17","21","15"],"13 + 15 + 17 + 19 = 64."],
-  ["R",5,"3 ishchi 3 kunda 3 ta devor quradi. 6 ishchi 6 kunda nechta devor quradi?","12",["6","9","3"],"Bitta ishchi kuniga 1/3 devor qiladi: 6 × 6 / 3 = 12."],
-  ["R",5,"1 dan 50 gacha sonlar yig'indisi nechaga teng?","1275",["1250","1300","1225"],"50 × 51 / 2 = 1275."],
-  ["M",5,"5 kishi bir-biri bilan bittadan qo'l siqishdi. Jami nechta qo'l siqish bo'ldi?","10",["5","15","20"],"Har bir juft bir marta: 5 × 4 / 2 = 10."],
-  ["M",5,"Ikki sham bir vaqtda yoqildi: biri 4 soatda, ikkinchisi 2 soatda yonib tugaydi. Qancha vaqtdan keyin birinchisining uzunligi ikkinchisidan 2 baravar katta bo'ladi?","1 soat 20 daqiqa",["1 soat","1,5 soat","2 soat"],"1 − t/4 = 2 × (1 − t/2) tenglamasidan t = 4/3 soat."],
-  ["M",5,"100 ta yopiq eshik bor. 1-kishi hammasini ochadi, 2-kishi 2 ga karralilarning holatini o'zgartiradi (ochiqni yopadi, yopiqni ochadi), 3-kishi 3 ga karralilarni va hokazo, 100-kishigacha. Oxirida nechta eshik ochiq qoladi?","10",["100","50","25"],"Faqat to'liq kvadrat raqamli eshiklar ochiq qoladi: 1, 4, 9, ... 100, jami 10 ta."],
-  ["M",5,"Oilada ikki qizning har biri «mening bitta ukam bor» deydi. Oilada eng kamida nechta bola bor?","3",["4","5","2"],"Ikkala qizning ukasi bitta o'g'il bo'lishi mumkin: 2 qiz + 1 o'g'il."],
-  ["S",5,"«Har bir qoidaning istisnosi bor, bu qoidaning ham» gapi qaysi tushunchaga misol?","O'ziga murojaat qiluvchi paradoks",["Tavtologiya","Sillogizm","Analogiya"],"Qoida o'zini ham qamrab oladi va o'z-o'zini inkor qiladi."],
-  ["S",5,"Induktiv fikrlash nima?","Alohida kuzatuvlardan umumiy xulosa chiqarish",["Umumiy qoidadan alohida xulosa chiqarish","Faqat his-tuyg'uga tayanish","Xulosasiz tavsif"],"Induksiya xususiydan umumiyga, deduksiya umumiydan xususiyga boradi."],
-  ["S",5,"«Yomg'ir yog'sa, yer ho'l bo'ladi» gapida yomg'ir yog'ishi yer ho'lligi uchun qaysi shart?","Yetarli shart, lekin zarur emas",["Zarur shart, lekin yetarli emas","Ham zarur, ham yetarli","Na zarur, na yetarli"],"Yomg'ir yetarli, lekin yer boshqa sabab bilan ham ho'l bo'lishi mumkin."],
-  ["S",5,"«Okkam ustarasi» tamoyili nima deydi?","Teng imkoniyatlarda eng sodda tushuntirish afzal",["Eng murakkab tushuntirish to'g'ri","Hech narsaga ishonmaslik kerak","Ko'pchilik fikri to'g'ri"],"Keraksiz taxminlarni kamaytirish — ishonchli xulosaning belgisi."],
-  ["F",5,"Kubni bitta tekislik bilan kesganda quyidagilardan qaysi shakl hosil bo'lishi MUMKIN EMAS?","Yettiburchak",["Muntazam oltiburchak","Uchburchak","Beshburchak"],"Kubning 6 ta yog'i bor, shuning uchun kesim ko'pi bilan 6 burchakli bo'ladi."],
-  ["F",5,"Shaxmat taxtasida (8×8) har xil o'lchamdagi kvadratlarni ham hisoblasak, jami nechta kvadrat bor?","204",["64","140","256"],"1² + 2² + ... + 8² = 204."],
-  ["F",5,"Perimetri 20 bo'lgan to'g'ri to'rtburchaklar ichida eng katta yuzali qaysi tomonlarga ega?","5 va 5",["4 va 6","3 va 7","2 va 8"],"Perimetr bir xil bo'lsa, eng katta yuza kvadratda bo'ladi: 5 × 5 = 25."],
-  ["F",5,"Kubni o'zaro perpendikulyar 3 ta tekislik bilan (markazdan) kessak, nechta bo'lak chiqadi?","8",["6","9","12"],"Har bir tekislik bo'laklarni ikkiga bo'ladi: 2 × 2 × 2 = 8."],
-  ["P",5,"Axilles toshbaqani quvib yeta olmaydi, chunki har safar toshbaqa bir oz oldinga siljiydi (Zeno paradoksi). Bu paradoks qanday hal bo'ladi?","Cheksiz ko'p kichik qadamlar yig'indisi cheklangan masofa bo'lishi mumkin",["Axilles yetarlicha tez emas","Toshbaqa ham tez yuguradi","Harakat umuman mumkin emas"],"Qadamlar kichrayib boradi va yig'indisi cheklangan songa yaqinlashadi."],
-  ["P",5,"«1 dona don uyum emas. Bitta don qo'shsak uyum bo'lmaydi...» fikr yuritish qaysi paradoksga olib keladi (Sorites)?","Tushunchalarning chegarasi noaniqligi",["Matematik xatolik","Cheksizlik","Tasodif"],"«Uyum» kabi tushunchalarda aniq o'tish nuqtasi yo'q."],
-  ["P",5,"Organ donorligida «rozilik» standart (rad etmasangiz rozi hisoblanasiz) bo'lgan mamlakatlarda rozilar soni ancha ko'p. Bu qaysi hodisa?","Standart tanlov effekti",["Langar effekti","Omon qolganlar xatosi","Qimorboz xatosi"],"Odamlar ko'pincha oldindan belgilangan variantni o'zgartirmaydi."],
-  ["P",5,"Dunning–Kruger effekti nimani bildiradi?","Malakasi past odamlar o'z qobiliyatini ortiqcha baholashga moyil",["Hamma o'zini to'g'ri baholaydi","Yosh ulg'aygan sayin aql pasayadi","Ko'p o'qigan odam hamma narsani biladi"],"Sohani yaxshi bilmagan odam o'z xatolarini ham ko'ra olmaydi."]
+ /* ---------- SO'Z VA MA'NO ---------- */
+ {t:"soz", d:2, q:"Saxovat : Xasislik = Jasorat : ?", o:["Qo'rqoqlik","Kuch","Aql","Dalil"], a:0},
+ {t:"soz", d:1, q:"«Sabr» so'ziga eng yaqin ma'noli so'z qaysi?", o:["Chidam","G'azab","Shoshilish","Qo'rquv"], a:0},
+ {t:"soz", d:1, q:"Shifokor : Kasalxona = O'qituvchi : ?", o:["Maktab","Kitob","Doska","Shogird"], a:0},
+ {t:"soz", d:1, q:"Vaqt : Soat = Harorat : ?", o:["Termometr","Issiq","Havo","Qish"], a:0},
+ {t:"soz", d:2, q:"Qaysi biri boshqalardan farq qiladi: Astronomiya, Algebra, Geometriya, Arifmetika?", o:["Astronomiya","Algebra","Geometriya","Arifmetika"], a:0},
+ {t:"soz", d:2, q:"«Ehtiyotkor» so'ziga qarama-qarshi ma'noli so'z qaysi?", o:["Beparvo","Tejamkor","Sodiq","Mehribon"], a:0},
+ {t:"soz", d:2, q:"«Oz-oz o'rganib dono bo'lur, qatra-qatra yig'ilib daryo bo'lur» maqolining mazmuni qaysi?", o:["Kichik ishlar yig'ilib katta natija beradi","Daryolarda baliq ko'p bo'ladi","Donolik tug'ma bo'ladi","Suvni tejash kerak"], a:0},
+ {t:"soz", d:2, q:"«Yetti o'lchab, bir kes» maqolining mazmuni qaysi?", o:["Qaror qilishdan oldin yaxshilab o'ylab ko'rish kerak","Matoni ko'p sotib olish kerak","Tez qaror qilish kerak","Yetti kun kutish shart"], a:0},
+ {t:"soz", d:1, q:"Sovun : Yuvish = Qaychi : ?", o:["Kesish","Tikish","Bo'yash","Yig'ish"], a:0},
+ {t:"soz", d:2, q:"Kitob : Kutubxona = Rasm : ?", o:["Galereya","Rassom","Bo'yoq","Ramka"], a:0},
+ {t:"soz", d:3, q:"Beparvolik : Xato = Mashq : ?", o:["Mahorat","Charchoq","Vaqt","Xato"], a:0},
+ {t:"soz", d:2, q:"Kuz : Hosil = Bahor : ?", o:["Ekish","Qor","Ta'til","Sovuq"], a:0},
+ {t:"soz", d:2, q:"Ko'prik : Daryo = Tunnel : ?", o:["Tog'","Daryo","Ko'cha","Osmon"], a:0},
+ {t:"soz", d:2, q:"Qaysi so'z qolganlari bilan bir qatorda emas: Mehr, Sadoqat, Hasad, Vafo?", o:["Mehr","Sadoqat","Hasad","Vafo"], a:2},
+ {t:"soz", d:3, q:"«Tejamkor» va «xasis» so'zlari o'rtasidagi asosiy farq nima?", o:["Tejamkor kerakli joyda sarflaydi, xasis hamma joyda ayaydi","Ularning farqi yo'q","Xasis ko'p sarflaydi","Tejamkor pul topmaydi"], a:0},
+
+ /* ---------- FAZOVIY FIKRLASH ---------- */
+ {t:"fazo", d:2, q:"Qog'ozni ikki marta buklab (to'rt qatlam qilib), o'rtasidan bir marta teshdingiz. Ochganda nechta teshik bo'ladi?", o:["2 ta","3 ta","4 ta","8 ta"], a:2},
+ {t:"fazo", d:3, q:"Kubning hamma yoqlari bo'yalib, uni 3×3×3 (27 ta) kichik kubga bo'lishdi. Hech bir yog'i bo'yalmagan kichik kub nechta?", o:["1 ta","6 ta","8 ta","0 ta"], a:0},
+ {t:"fazo", d:2, q:"Tez yordam mashinasining old tomonidagi yozuv teskari yozilgan. Sababi nima?", o:["Oldinda ketayotgan haydovchi uni ko'zguda to'g'ri o'qiydi","Chiroyli ko'rinishi uchun","Xato bosilgan","Shunchaki odat"], a:0},
+ {t:"fazo", d:2, q:"Quyosh sharqdan chiqayotgan paytda odamning soyasi qaysi tomonga tushadi?", o:["G'arbga","Sharqqa","Shimolga","Janubga"], a:0},
+ {t:"fazo", d:2, q:"Xaritada shimol yuqorida. Siz minoraning g'arbida turibsiz. Minora sizga nisbatan qaysi tomonda?", o:["Sharqda","G'arbda","Shimolda","Janubda"], a:0},
+ {t:"fazo", d:1, q:"Qaysi biri ortiqcha: Kvadrat, Uchburchak, Kub, Doira?", o:["Kvadrat","Uchburchak","Kub","Doira"], a:2}
 ];
 
-const BANK = BANK_RAW.map((r, i) => ({id:i, c:r[0], d:r[1], q:r[2], o:[r[3]].concat(r[4]), x:r[5]}));
+/* =====================================================================
+   2) AVTOMATIK SAVOL YARATGICHLAR (har safar yangi variant chiqaradi)
+   ===================================================================== */
+function rnd(n){ return Math.floor(Math.random()*n); }
+function pick(a){ return a[rnd(a.length)]; }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=rnd(i+1); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function sample(a,k){ return shuffle(a).slice(0,k); }
 
-const LEVELS = [
-  {max:6,  e:"🌱", t:"Rivojlanayotgan daraja", s:"Siz hozir poydevor qurayapsiz. Har bir mashq tezda natija beradi."},
-  {max:12, e:"⚡", t:"Barqaror daraja", s:"Asoslaringiz yaxshi. Murakkab savollarda yana bir qadam kerak."},
-  {max:17, e:"🚀", t:"Kuchli daraja", s:"Mantiqiy fikrlashingiz yuqori. Siz ko'pchilikdan oldindasiz."},
-  {max:20, e:"👑", t:"A'lo daraja", s:"Deyarli xatosiz! Murakkab mantiq va fikrlash xatolarini yaxshi ushlaysiz."}
+const NAMES = ["Aziz","Bobur","Sardor","Dilshod","Anvar","Karim","Jasur","Farrux","Madina","Nilufar","Zilola","Malika","Sevara","Otabek","Rustam"];
+const DAYS  = ["Dushanba","Seshanba","Chorshanba","Payshanba","Juma","Shanba","Yakshanba"];
+const DIRS  = ["Shimol","Sharq","Janub","G'arb"];
+const DIR_DAT = ["Shimolga","Sharqqa","Janubga","G'arbga"];
+const JOBS  = ["O'qituvchi","Shifokor","Muhandis","Haydovchi","Oshpaz","Dasturchi","Quruvchi","Hisobchi"];
+
+/* --- Tartib masalasi: kim baland / tez / og'ir / katta --- */
+const ORD = [
+ {rel:(a,b)=>`${a} ${b}dan baland bo'yli.`,    top:"Eng baland bo'yli kim?",       bot:"Eng past bo'yli kim?"},
+ {rel:(a,b)=>`${a} ${b}dan tezroq yuguradi.`,  top:"Eng tez yuguradigan kim?",      bot:"Eng sekin yuguradigan kim?"},
+ {rel:(a,b)=>`${a} ${b}dan og'irroq.`,         top:"Eng og'ir kim?",                bot:"Eng yengil kim?"},
+ {rel:(a,b)=>`${a} ${b}dan yoshi katta.`,      top:"Yoshi eng katta kim?",          bot:"Yoshi eng kichik kim?"}
 ];
-
-function shuffle(a) {
-  a = a.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const t = a[i]; a[i] = a[j]; a[j] = t;
-  }
-  return a;
+function genOrder(){
+  const n = Math.random()<0.4 ? 4 : 3;
+  const people = sample(NAMES,n);                // people[0] eng yuqori, oxirgisi eng quyi
+  const o = pick(ORD);
+  const clues=[], pairs=[];
+  for(let i=0;i<n-1;i++){ clues.push(o.rel(people[i],people[i+1])); pairs.push([people[i],people[i+1]]); }
+  const askTop = Math.random()<0.5;
+  const ans = askTop ? people[0] : people[n-1];
+  const opts = shuffle(people);
+  return {t:"mantiq", d:(n===4?3:2), q: shuffle(clues).join(" ")+" "+(askTop?o.top:o.bot),
+          o:opts, a:opts.indexOf(ans), _g:"order", _pairs:pairs, _askTop:askTop};
 }
 
-function getSeen() {
-  try { return JSON.parse(load("iq_seen2") || "[]"); } catch (e) { return []; }
+/* --- Hafta kunlari --- */
+const REFS = [
+ {off:-2, txt:y=>`Kechadan oldingi kun ${y} edi.`},
+ {off:-1, txt:y=>`Kecha ${y} edi.`},
+ {off: 1, txt:y=>`Ertaga ${y} bo'ladi.`},
+ {off: 2, txt:y=>`Indinga ${y} bo'ladi.`}
+];
+const TGTS = [
+ {off: 0, txt:"Bugun qaysi kun?"},
+ {off: 1, txt:"Ertaga qaysi kun bo'ladi?"},
+ {off:-1, txt:"Kecha qaysi kun edi?"},
+ {off: 2, txt:"Indinga qaysi kun bo'ladi?"},
+ {off:-2, txt:"Kechadan oldingi kun qaysi kun edi?"}
+];
+function dayOptions(ansIdx){
+  const others = shuffle([0,1,2,3,4,5,6].filter(i=>i!==ansIdx)).slice(0,3);
+  const opts = shuffle([ansIdx].concat(others)).map(i=>DAYS[i]);
+  return opts;
+}
+function genWeek(){
+  if(Math.random()<0.5){
+    const day=rnd(7), n=pick([9,10,11,12,16,17,18,20,23,25,30,31]);
+    const ans=(day+n)%7, opts=dayOptions(ans);
+    return {t:"mantiq", d:3, q:`Bugun ${DAYS[day]}. ${n} kundan keyin qaysi kun bo'ladi?`, o:opts, a:opts.indexOf(DAYS[ans]), _g:"week2", _day:day, _n:n};
+  }
+  const r=pick(REFS), tt=pick(TGTS.filter(x=>x.off!==r.off));
+  const y=rnd(7);
+  const ans=(((y - r.off + tt.off)%7)+7)%7, opts=dayOptions(ans);
+  const hard = (Math.abs(r.off)===2 || Math.abs(tt.off)===2);
+  return {t:"mantiq", d:(hard?3:2), q:`${r.txt(DAYS[y])} ${tt.txt}`, o:opts, a:opts.indexOf(DAYS[ans]), _g:"week1", _y:y, _ref:r.off, _tgt:tt.off};
 }
 
-function buildQuiz() {
-  const seen = getSeen();
-  const used = [];
-  const chosen = [];
-  const catKeys = Object.keys(CATS);
-  for (let d = 1; d <= 5; d++) {
-    const pool = BANK.filter(q => q.d === d);
-    const key = q => (seen.indexOf(q.id) >= 0 ? 2 : 0) + Math.random();
-    const cats = shuffle(catKeys).slice(0, 4);
-    const picked = [];
-    cats.forEach(c => {
-      const list = pool.filter(q => q.c === c).sort((a, b) => key(a) - key(b));
-      if (list.length) picked.push(list[0]);
-    });
-    shuffle(picked).forEach(q => { chosen.push(q); used.push(q.id); });
+/* --- Kasblarni topish --- */
+function genJob(){
+  const [p1,p2,p3]=sample(NAMES,3);
+  const [j1,j2,j3]=sample(JOBS,3);
+  // haqiqat: p1=j2, p2=j1, p3=j3
+  const truth={}; truth[p1]=j2; truth[p2]=j1; truth[p3]=j3;
+  const who = pick([p1,p2,p3]);
+  const text = `${p1}, ${p2} va ${p3}ning kasblari: ${j1.toLowerCase()}, ${j2.toLowerCase()} va ${j3.toLowerCase()} (har biri har xil). `+
+               `${p2} ${j2.toLowerCase()} ham, ${j3.toLowerCase()} ham emas. ${p3} ${j2.toLowerCase()} emas. ${who} kim?`;
+  const extra = pick(JOBS.filter(j=>j!==j1&&j!==j2&&j!==j3));
+  const opts = shuffle([j1,j2,j3,extra]);
+  return {t:"mantiq", d:3, q:text, o:opts, a:opts.indexOf(truth[who]), _g:"job", _truth:truth, _who:who, _jobs:[j1,j2,j3]};
+}
+
+/* --- Yo'nalish --- */
+function genDir(){
+  const steps = Math.random()<0.5 ? 2 : 3;
+  const start = rnd(4); let cur = start; const parts=[];
+  const TURN=[{txt:"o'ngga",d:1},{txt:"chapga",d:3},{txt:"orqaga",d:2}];
+  const used=[];
+  for(let i=0;i<steps;i++){ const t=pick(TURN); cur=(cur+t.d)%4; parts.push(t.txt); used.push(t.txt); }
+  const text = `${DIR_DAT[start]} qarab turibsiz. Avval ${parts[0]}, keyin ${parts.slice(1).join(", keyin ")} burildingiz. Endi qaysi tomonga qaraysiz?`;
+  const opts = shuffle(DIRS);
+  return {t:"fazo", d:(steps===3?3:2), q:text, o:opts, a:opts.indexOf(DIRS[cur]), _g:"dir", _start:start, _turns:used};
+}
+
+/* --- Oynadagi soat --- */
+function fmtT(total){ const m=((total%720)+720)%720; let h=Math.floor(m/60); const mm=m%60; if(h===0) h=12; return h+":"+String(mm).padStart(2,"0"); }
+function genMirror(){
+  let h, mm, shown;
+  do { h=1+rnd(11); mm=pick([0,0,15,30,45]); shown=h*60+mm; } while(h===6 && mm===0);
+  const real=720-shown;
+  const ans=fmtT(real), seen=fmtT(shown);
+  if(ans===seen) return genMirror();
+  const set=new Set([ans,seen]);
+  while(set.size<4) set.add(fmtT(real+30*(rnd(9)-4)));
+  const opts=shuffle([...set]);
+  return {t:"fazo", d:(mm===0?2:3), q:`Soatning oynadagi aksi ${seen} ni ko'rsatyapti. Soat haqiqatda necha?`, o:opts, a:opts.indexOf(ans), _g:"mirror", _shown:shown};
+}
+
+/* --- Soat millari orasidagi burchak --- */
+function genAngle(){
+  const h=1+rnd(11);
+  const ang=Math.min(30*h, 360-30*h);
+  const set=new Set([ang]);
+  const pool=[30,60,90,120,150,180,210,240];
+  while(set.size<4) set.add(pick(pool));
+  const opts=shuffle([...set].map(v=>v+"°"));
+  return {t:"fazo", d:2, q:`Soat roppa-rosa ${h}:00 bo'lganda, soat va minut millari orasidagi kichik burchak necha gradus?`, o:opts, a:opts.indexOf(ang+"°"), _g:"angle", _h:h};
+}
+
+const GENS = { mantiq:[genOrder,genWeek,genJob], fazo:[genDir,genMirror,genAngle] };
+
+/* =====================================================================
+   3) TEST TUZISH
+   ===================================================================== */
+function getSeen(){ try{ return JSON.parse(localStorage.getItem("iqseen")||"[]"); }catch(e){ return []; } }
+function saveSeen(a){ try{ localStorage.setItem("iqseen", JSON.stringify(a.slice(-500))); }catch(e){} }
+
+function poolFor(cat){
+  const pool = BANK.filter(q=>q.t===cat).slice();
+  (GENS[cat]||[]).forEach(g=>{ for(let i=0;i<14;i++) pool.push(g()); });
+  const m=new Map(); pool.forEach(q=>{ if(!m.has(q.q)) m.set(q.q,q); });
+  return [...m.values()];
+}
+
+function buildTest(){
+  const seen=new Set(getSeen());
+  let chosen=[];
+  for(const cat in QUOTA){
+    const pool=poolFor(cat);
+    pool.forEach(q=>{ q._s = Math.random() + (seen.has(q.q)?-1:0) + (q.d===1?0.05:0) + (q.d===2?0.2:0); });
+    pool.sort((a,b)=>b._s-a._s);
+    chosen = chosen.concat(pool.slice(0,QUOTA[cat]));
   }
-  let newSeen = seen.concat(used);
-  if (newSeen.length > 90) newSeen = used;
-  save("iq_seen2", JSON.stringify(newSeen));
-  return chosen.map(q => {
-    const opts = shuffle(q.o.map((t, i) => ({t:t, ok:i === 0})));
-    return {c:q.c, d:q.d, q:q.q, x:q.x, o:opts.map(z => z.t), a:opts.findIndex(z => z.ok), t:TIMES[q.d]};
+  chosen.forEach(q=>{ q._r=Math.random(); });
+  chosen.sort((a,b)=>(a.d-b.d)||(a._r-b._r));
+  // Birinchi 3 savolda tarix bo'lmasin
+  const head=[], rest=[];
+  chosen.forEach(q=>{ if(head.length<3 && q.t!=="tarix") head.push(q); else rest.push(q); });
+  const list=head.concat(rest);
+  saveSeen([...seen].concat(list.map(q=>q.q)));
+  // Variantlarni aralashtirish
+  return list.map(q=>{
+    const idx=shuffle(q.o.map((_,i)=>i));
+    return {t:q.t, d:q.d, q:q.q, o:idx.map(i=>q.o[i]), a:idx.indexOf(q.a)};
   });
 }
 
-let Q = [];
-let i = 0, score = 0, streak = 0, maxStreak = 0, left = 40, curLimit = 40, timer = null, locked = false, t0 = 0, ans = [];
-let stat = {};
-const $ = id => document.getElementById(id);
+/* =====================================================================
+   4) INTERFEYS
+   ===================================================================== */
+const app = document.getElementById('app');
+let Q=[], idx=0, answers=[], left=TOTAL_SEC, timerId=null;
 
-(function () {
-  const b = load("iq_best");
-  if (b) $("best").textContent = "Eng yaxshi natijangiz: " + b + "/20";
-})();
+function fmt(s){ const m=Math.floor(s/60), r=s%60; return m+":"+String(r).padStart(2,'0'); }
 
-function show(id) {
-  ["start", "quiz", "result"].forEach(s => $(s).classList.toggle("hidden", s !== id));
-  window.scrollTo(0, 0);
+function start(){
+  app.innerHTML = `
+  <div class="card center">
+    <div style="font-size:54px">🧠</div>
+    <h1>IQ TEST AI</h1>
+    <p>20 ta savol · ${TOTAL_SEC/60} daqiqa. Savollar har safar yangicha tanlanadi va asta-sekin qiyinlashadi.<br>Mantiq, so'z, fazoviy va hayotiy fikrlash, shuningdek tarix bo'yicha bilimingiz tekshiriladi.</p>
+    <p>Shoshilmang, lekin vaqtga e'tibor bering. Bilmagan savolni o'tkazib yuborib, keyin qaytishingiz mumkin.</p>
+    <button class="btn" onclick="begin()">Testni boshlash</button>
+  </div>`;
 }
 
-function startQuiz() {
-  Q = buildQuiz();
-  i = 0; score = 0; streak = 0; maxStreak = 0; ans = []; t0 = Date.now();
-  stat = {R:[0,0], M:[0,0], S:[0,0], F:[0,0], P:[0,0]};
-  show("quiz");
-  render();
-}
-
-function setTimer() {
-  const t = $("timer");
-  t.textContent = left;
-  t.classList.toggle("low", left <= 8);
-  $("tbar").style.width = (left / curLimit * 100) + "%";
-}
-
-function render() {
-  locked = false;
-  const q = Q[i];
-  curLimit = q.t;
-  left = curLimit;
-  $("count").textContent = (i + 1) + "/" + Q.length;
-  $("pbar").style.width = (i / Q.length * 100) + "%";
-  $("meta").textContent = CATS[q.c].e + " " + CATS[q.c].n + "   " + "●".repeat(q.d) + "○".repeat(5 - q.d);
-  $("qtext").textContent = q.q;
-  $("fb").classList.add("hidden");
-  $("next").classList.add("hidden");
-  const st = $("streak");
-  if (streak >= 2) { st.textContent = "🔥 " + streak; st.classList.remove("hidden"); } else st.classList.add("hidden");
-  const box = $("opts");
-  box.innerHTML = "";
-  q.o.forEach((t, k) => {
-    const b = document.createElement("button");
-    b.className = "opt";
-    b.textContent = t;
-    b.onclick = () => pick(k);
-    box.appendChild(b);
-  });
-  setTimer();
-  clearInterval(timer);
-  timer = setInterval(() => {
+function begin(){
+  Q = buildTest();
+  idx=0; answers=new Array(Q.length).fill(null); left=TOTAL_SEC;
+  clearInterval(timerId);
+  timerId=setInterval(()=>{
     left--;
-    setTimer();
-    if (left <= 0) pick(-1);
-  }, 1000);
+    const el=document.getElementById('tm'); if(el) el.textContent="⏱ "+fmt(left);
+    if(left<=0){ clearInterval(timerId); finish(); }
+  },1000);
+  show();
 }
 
-function cheer() {
-  if (i === 4) return " Zo'r boshlanish!";
-  if (i === 9) return " Yarmi o'tdi, davom eting!";
-  if (i === 14) return " Oxirgi 5 ta savol qoldi!";
-  return "";
+function show(){
+  const q=Q[idx];
+  const pct=Math.round((idx/Q.length)*100);
+  app.innerHTML = `
+  <div class="top"><span>Savol ${idx+1} / ${Q.length}</span><span class="timer" id="tm">⏱ ${fmt(left)}</span></div>
+  <div class="bar"><div style="width:${pct}%"></div></div>
+  <div class="card">
+    <h2>${q.q}</h2>
+    ${q.o.map((x,i)=>`<button class="opt ${answers[idx]===i?'sel':''}" onclick="choose(${i})">${x}</button>`).join('')}
+    <button class="btn" onclick="next()">${idx===Q.length-1?"Natijani ko'rish":"Keyingisi"}</button>
+    ${idx>0?'<button class="btn ghost" onclick="prev()">Orqaga</button>':''}
+  </div>`;
 }
 
-function pick(k) {
-  if (locked) return;
-  locked = true;
-  clearInterval(timer);
-  const q = Q[i];
-  ans.push(k);
-  stat[q.c][1]++;
-  const btns = $("opts").children;
-  for (const b of btns) b.setAttribute("disabled", "");
-  let title;
-  if (k === q.a) {
-    score++; stat[q.c][0]++; streak++; if (streak > maxStreak) maxStreak = streak;
-    title = streak >= 3 ? "🔥 To'g'ri! " + streak + " ta ketma-ket" : "✅ To'g'ri!";
-    haptic("success");
-  } else {
-    streak = 0;
-    if (k >= 0) btns[k].classList.add("soft");
-    title = k === -1 ? "⏱ Vaqt tugadi. Hech qisi yo'q!" : "💜 Yaxshi urinish!";
-    haptic("warning");
-  }
-  btns[q.a].classList.add("ok");
-  $("fb").innerHTML = "<b>" + title + cheer() + "</b>" + q.x;
-  $("fb").classList.remove("hidden");
-  const nx = $("next");
-  nx.textContent = i === Q.length - 1 ? "Natijani ko'rish →" : "Keyingisi →";
-  nx.classList.remove("hidden");
+function choose(i){
+  answers[idx]=i;
+  document.querySelectorAll('.opt').forEach((b,k)=>b.classList.toggle('sel',k===i));
+  if(tg && tg.HapticFeedback) tg.HapticFeedback.selectionChanged();
+}
+function next(){ if(idx<Q.length-1){ idx++; show(); } else finish(); }
+function prev(){ if(idx>0){ idx--; show(); } }
+
+function finish(){
+  clearInterval(timerId);
+  let c=0;
+  const by={tarix:[0,0],mantiq:[0,0],soz:[0,0],fazo:[0,0],hayot:[0,0]};
+  Q.forEach((q,i)=>{ by[q.t][1]++; if(answers[i]===q.a){ c++; by[q.t][0]++; } });
+  const iq=80+c*3;
+  let level,desc;
+  if(iq>=130){ level="Juda yuqori"; desc="Murakkab masalalarni tez va chuqur tahlil qila olasiz."; }
+  else if(iq>=115){ level="Yuqori"; desc="Mantiqiy fikrlashingiz o'rtachadan yaxshi darajada."; }
+  else if(iq>=100){ level="O'rtadan yuqori"; desc="Yaxshi poydevor bor, mashq bilan yanada o'sasiz."; }
+  else if(iq>=90){ level="O'rta"; desc="Barqaror natija. Muntazam mashq katta farq beradi."; }
+  else { level="Rivojlanish bosqichi"; desc="Bu faqat boshlanish. Mashq qilsangiz natija tez yaxshilanadi."; }
+  const names={tarix:"Tarix va bilim",mantiq:"Mantiqiy xulosa",soz:"So'z va ma'no",fazo:"Fazoviy fikrlash",hayot:"Hayotiy fikrlash"};
+  const keys=Object.keys(by).filter(k=>by[k][1]>0);
+  const rows=keys.map(k=>`<div class="stat"><span>${names[k]}</span><b>${by[k][0]} / ${by[k][1]}</b></div>`).join('');
+  const ranked=keys.slice().sort((a,b)=>by[b][0]/by[b][1]-by[a][0]/by[a][1]);
+  const best=names[ranked[0]], weak=names[ranked[ranked.length-1]];
+  const used=TOTAL_SEC-Math.max(left,0);
+  app.innerHTML=`
+  <div class="card">
+    <p class="center" style="margin:0">Sizning taxminiy IQ ballingiz</p>
+    <div class="big">${iq}</div>
+    <h2 class="center" style="margin-bottom:6px">${level}</h2>
+    <p class="center">${desc}</p>
+    <div class="stat"><span>To'g'ri javoblar</span><b>${c} / ${Q.length}</b></div>
+    <div class="stat"><span>Sarflangan vaqt</span><b>${fmt(used)}</b></div>
+    ${rows}
+    <div style="margin-top:14px">
+      <div class="tip">💪 <b>Eng kuchli tomoningiz:</b> ${best}</div>
+      <div class="tip">🎯 <b>Rivojlantirish kerak:</b> ${weak}. Kuniga 10 daqiqa shu turdagi masalalar yechsangiz, tez natija ko'rasiz.</div>
+    </div>
+    <button class="btn" onclick="openAnalysis()">✨ To'liq shaxsiy tahlilni olish</button>
+    <button class="btn ghost" onclick="start()">Qayta topshirish</button>
+    <div class="small">Bu o'yin-test bo'lib, rasmiy klinik IQ testi o'rnini bosmaydi. Ball taxminiy.</div>
+  </div>`;
+  if(tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
 }
 
-function nextQ() {
-  i++;
-  if (i < Q.length) render(); else finish();
+function openAnalysis(){
+  if(tg && tg.openTelegramLink) tg.openTelegramLink(ANALYSIS_LINK); else window.open(ANALYSIS_LINK,'_blank');
 }
 
-function fmt(s) { return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
-
-function finish() {
-  clearInterval(timer);
-  const sec = Math.round((Date.now() - t0) / 1000);
-  const pct = Math.round(score / Q.length * 100);
-  const lvl = LEVELS.find(l => score <= l.max);
-  const prev = parseInt(load("iq_best") || "0", 10);
-  if (score > prev) save("iq_best", String(score));
-
-  const keys = Object.keys(CATS).filter(c => stat[c][1] > 0);
-  const rate = c => stat[c][0] / stat[c][1];
-  const sorted = keys.slice().sort((a, b) => rate(b) - rate(a));
-  const best = sorted[0], weak = sorted[sorted.length - 1];
-
-  const bars = keys.map(c => {
-    const p = Math.round(rate(c) * 100);
-    return '<div class="cat"><div class="r"><span>' + CATS[c].e + ' ' + CATS[c].n + '</span><b>' + stat[c][0] + '/' + stat[c][1] + '</b></div><div class="b"><i style="width:' + p + '%"></i></div></div>';
-  }).join("");
-
-  const record = score > prev && prev > 0 ? '<p class="sub" style="margin-top:12px">🎉 Yangi shaxsiy rekord!</p>' : "";
-
-  $("result").innerHTML =
-    '<div class="card center">' +
-      '<div class="emoji">' + lvl.e + '</div>' +
-      '<div class="score">' + score + '<span>/' + Q.length + '</span></div>' +
-      '<p class="sub"><b>' + lvl.t + '</b><br>' + lvl.s + '</p>' +
-      '<div class="stats">' +
-        '<div><b>' + pct + '%</b><small>To\'g\'ri</small></div>' +
-        '<div><b>🔥 ' + maxStreak + '</b><small>Eng uzun seriya</small></div>' +
-        '<div><b>' + fmt(sec) + '</b><small>Vaqt</small></div>' +
-      '</div>' + record +
-    '</div>' +
-    '<div class="card"><h3>📊 Yo\'nalishlar bo\'yicha</h3>' + bars + '</div>' +
-    '<div class="card"><h3>💡 Sizga tavsiya</h3>' +
-      '<div class="free"><b>Eng kuchli tomoningiz:</b> ' + CATS[best].e + ' ' + CATS[best].n + '.<br>O\'sish uchun: ' + CATS[weak].e + ' ' + CATS[weak].n + ' ustida ishlang. ' + TIP[weak] + '</div>' +
-    '</div>' +
-    '<div class="card"><h3>🔓 Shaxsiy tahlil</h3>' +
-      '<p class="sub">Bepul xulosa tepada. To\'liq tahlilda quyidagilar bo\'ladi:</p>' +
-      '<ul class="tips lock"><li>Fikrlash uslubingiz: tezmi yoki puxtami</li><li>Har bir xatongiz sababi va yechimi</li><li>7 kunlik shaxsiy mashq rejasi</li><li>Qaytadan topshirib, o\'sishni solishtirish</li></ul>' +
-      '<button class="btn" onclick="wantPro()">Shaxsiy tahlilni olish</button>' +
-    '</div>' +
-    '<button class="btn" onclick="startQuiz()">🔄 Yangi savollar bilan qayta topshirish</button>' +
-    '<button class="btn ghost" onclick="share()">📤 Do\'stlarga ulashish</button>' +
-    '<p class="note center">Natija taxminiy. Rasmiy IQ o\'lchovi yoki psixologik tashxis emas.</p>';
-  show("result");
-  haptic("success");
-}
-
-function wantPro() {
-  save("iq_pro_interest", "1");
-  const m = "Shaxsiy tahlil tez orada ishga tushadi. Birinchilardan bo'lib xabar olasiz!";
-  try { tg.showAlert(m); } catch (e) { alert(m); }
-}
-
-function share() {
-  const url = "https://t.me/share/url?url=" + encodeURIComponent("https://t.me/IQTestPro_uz_bot") + "&text=" + encodeURIComponent("Men mantiq va fikrlash testida " + score + "/20 to'pladim. Sen-chi? 🧠");
-  try { tg.openTelegramLink(url); } catch (e) { window.open(url, "_blank"); }
-}
-  (function () {
-  const css = `
-.rhero{position:relative;overflow:hidden;text-align:center;border-radius:28px;padding:26px 16px 20px;margin-bottom:14px;background:linear-gradient(145deg,#7c3aed 0%,#c026d3 55%,#f472b6 100%);box-shadow:0 14px 40px rgba(192,38,211,.45)}
-.rhero::before{content:"";position:absolute;top:-90px;right:-70px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%)}
-.rring{position:relative;width:150px;height:150px;margin:0 auto 12px}
-.rring svg{transform:rotate(-90deg)}
-.rring .n{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.rring .n b{font-size:44px;line-height:1}
-.rring .n span{font-size:14px;opacity:.85}
-.rlvl{font-size:22px;font-weight:800;margin-bottom:4px;position:relative}
-.rsub{opacity:.92;line-height:1.5;font-size:14px;margin-bottom:16px;position:relative}
-.rstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;position:relative}
-.rstats div{background:rgba(255,255,255,.2);border-radius:16px;padding:10px 4px}
-.rstats b{display:block;font-size:19px}
-.rstats small{font-size:11px;opacity:.9}
-.rpills{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-.rpill{border-radius:16px;padding:12px;font-size:13px;line-height:1.4}
-.rpill b{display:block;font-size:12px;opacity:.85;margin-bottom:3px}
-.rpill.g{background:rgba(52,211,153,.16);border:1px solid rgba(52,211,153,.45)}
-.rpill.o{background:rgba(251,191,36,.14);border:1px solid rgba(251,191,36,.45)}
-.rtip{font-size:14px;line-height:1.5;color:var(--mut)}
-.rb{display:block;width:100%;border:0;border-radius:16px;padding:15px 10px;font-size:16px;font-weight:700;color:#fff;cursor:pointer}
-.rb:active{transform:scale(.97)}
-.rb.main{background:linear-gradient(135deg,#f472b6,#a855f7);box-shadow:0 10px 28px rgba(244,114,182,.45);font-size:17px;padding:17px}
-.rb.g1{background:linear-gradient(135deg,#8b5cf6,#6d28d9)}
-.rb.g2{background:linear-gradient(135deg,#06b6d4,#3b82f6)}
-.rb.g3{background:linear-gradient(135deg,#f59e0b,#ef4444)}
-.rb.g4{background:rgba(255,255,255,.1);border:1px solid var(--line)}
-.rgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.rpro{border-radius:24px;padding:20px;margin-bottom:14px;background:linear-gradient(160deg,rgba(168,85,247,.28),rgba(244,114,182,.16));border:1px solid rgba(244,114,182,.5)}
-.rpro li{list-style:none;padding:7px 0;font-size:14px;line-height:1.45}
-.rdet{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 16px;margin:14px 0}
-.rdet summary{font-weight:700;cursor:pointer;font-size:16px}
-.rw{padding:12px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.5}
-.rw:last-child{border:0}
-.rw .a{color:#fca5a5}
-.rw .c{color:var(--ok)}
-.rok{background:rgba(52,211,153,.16);border:1px solid rgba(52,211,153,.45);border-radius:20px;padding:14px;text-align:center;margin:14px 0;font-weight:700}
-`;
-  const s = document.createElement("style");
-  s.textContent = css;
-  document.head.appendChild(s);
-})();
-
-function finish() {
-  clearInterval(timer);
-  const sec = Math.round((Date.now() - t0) / 1000);
-  const pct = Math.round(score / Q.length * 100);
-  const lvl = LEVELS.find(l => score <= l.max);
-  const prev = parseInt(load("iq_best") || "0", 10);
-  if (score > prev) save("iq_best", String(score));
-
-  const COL = {R:"#22d3ee", M:"#a78bfa", S:"#fbbf24", F:"#f472b6", P:"#34d399"};
-  const keys = Object.keys(CATS).filter(c => stat[c][1] > 0);
-  const rate = c => stat[c][0] / stat[c][1];
-  const sorted = keys.slice().sort((a, b) => rate(b) - rate(a));
-  const best = sorted[0], weak = sorted[sorted.length - 1];
-
-  const bars = keys.map(c => {
-    const p = Math.round(rate(c) * 100);
-    return '<div class="cat"><div class="r"><span>' + CATS[c].e + ' ' + CATS[c].n + '</span><b>' + stat[c][0] + '/' + stat[c][1] + '</b></div><div class="b"><i style="width:' + p + '%;background:' + COL[c] + '"></i></div></div>';
-  }).join("");
-
-  let wrongHtml = "", wrongCount = 0;
-  Q.forEach((q, n) => {
-    if (ans[n] !== q.a) {
-      wrongCount++;
-      const mine = ans[n] === -1 ? "Vaqt tugadi" : q.o[ans[n]];
-      wrongHtml += '<div class="rw"><b>' + (n + 1) + '. ' + q.q + '</b><br><span class="a">Sizning javobingiz: ' + mine + '</span><br><span class="c">To\'g\'ri javob: ' + q.o[q.a] + '</span><br>' + q.x + '</div>';
-    }
-  });
-  const review = wrongCount
-    ? '<details class="rdet"><summary>🔍 Xatolar tahlili (' + wrongCount + ')</summary>' + wrongHtml + '</details>'
-    : '<div class="rok">🎉 Xatosiz! Barcha javoblaringiz to\'g\'ri.</div>';
-
-  const record = score > prev && prev > 0 ? ' · 🎉 Yangi rekord!' : '';
-
-  $("result").innerHTML =
-    '<div class="rhero">' +
-      '<div class="rring">' +
-        '<svg width="150" height="150" viewBox="0 0 120 120">' +
-          '<circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="10"/>' +
-          '<circle id="rarc" cx="60" cy="60" r="52" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-dasharray="327" stroke-dashoffset="327" style="transition:stroke-dashoffset 1.2s ease"/>' +
-        '</svg>' +
-        '<div class="n"><b>' + score + '</b><span>/ ' + Q.length + '</span></div>' +
-      '</div>' +
-      '<div class="rlvl">' + lvl.e + ' ' + lvl.t + '</div>' +
-      '<div class="rsub">' + lvl.s + record + '</div>' +
-      '<div class="rstats">' +
-        '<div><b>' + pct + '%</b><small>To\'g\'ri</small></div>' +
-        '<div><b>🔥 ' + maxStreak + '</b><small>Eng uzun seriya</small></div>' +
-        '<div><b>' + fmt(sec) + '</b><small>Vaqt</small></div>' +
-      '</div>' +
-    '</div>' +
-
-    '<div class="card"><h3>📊 Yo\'nalishlar</h3>' + bars +
-      '<div class="rpills">' +
-        '<div class="rpill g"><b>💪 Kuchli tomon</b>' + CATS[best].e + ' ' + CATS[best].n + '</div>' +
-        '<div class="rpill o"><b>🎯 O\'sish uchun</b>' + CATS[weak].e + ' ' + CATS[weak].n + '</div>' +
-      '</div>' +
-      '<p class="rtip">💡 ' + TIP[weak] + '</p>' +
-    '</div>' +
-
-    review +
-
-    '<div class="rpro">' +
-      '<h3>✨ Shaxsiy tahlil</h3>' +
-      '<ul>' +
-        '<li>🧠 Fikrlash uslubingiz: tezmi yoki puxtami</li>' +
-        '<li>🔎 Har bir xatongizning sababi va yechimi</li>' +
-        '<li>📅 7 kunlik shaxsiy mashq rejasi</li>' +
-      '</ul>' +
-      '<button class="rb main" style="margin-top:10px" onclick="wantPro()">✨ Shaxsiy tahlilni olish</button>' +
-    '</div>' +
-
-    '<div class="rgrid">' +
-      '<button class="rb g1" onclick="startQuiz()">🔄 Qayta topshirish</button>' +
-      '<button class="rb g2" onclick="shareRes()">📤 Ulashish</button>' +
-      '<button class="rb g3" onclick="contactAdmin()">💬 Admin</button>' +
-      '<button class="rb g4" onclick="closeApp()">✖️ Yopish</button>' +
-    '</div>' +
-    '<p class="note center">Natija taxminiy. Rasmiy IQ o\'lchovi yoki psixologik tashxis emas.</p>';
-
-  show("result");
-  setTimeout(() => {
-    const a = $("rarc");
-    if (a) a.style.strokeDashoffset = String(327 * (1 - score / Q.length));
-  }, 80);
-  haptic("success");
-}
-
-function shareRes() {
-  const lvl = LEVELS.find(l => score <= l.max);
-  const text = "Men IQ TEST AI da " + score + "/" + Q.length + " natija ko'rsatdim (" + lvl.t + "). Sen ham sinab ko'r! 🧠";
-  const url = "https://t.me/share/url?url=" + encodeURIComponent("https://t.me/IQTestPro_uz_bot") + "&text=" + encodeURIComponent(text);
-  try { tg.openTelegramLink(url); } catch (e) { window.open(url, "_blank"); }
-}
-
-function contactAdmin() {
-  const url = "https://t.me/Rustamjon4";
-  try { tg.openTelegramLink(url); } catch (e) { window.open(url, "_blank"); }
-}
-
-function closeApp() {
-  try { tg.close(); } catch (e) { show("start"); }
-}
-
+start();
 </script>
 </body>
 </html>
